@@ -1,0 +1,555 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		886607EC1FE1308500DE1E62 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 886607EB1FE1308500DE1E62 /* AppDelegate.m */; };
+		886607EF1FE1308500DE1E62 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 886607EE1FE1308500DE1E62 /* ViewController.m */; };
+		886607F21FE1308500DE1E62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886607F01FE1308500DE1E62 /* Main.storyboard */; };
+		886607F41FE1308500DE1E62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 886607F31FE1308500DE1E62 /* Assets.xcassets */; };
+		886607F71FE1308500DE1E62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 886607F51FE1308500DE1E62 /* LaunchScreen.storyboard */; };
+		886607FA1FE1308500DE1E62 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 886607F91FE1308500DE1E62 /* main.m */; };
+		886608071FE130AB00DE1E62 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 886608061FE130AB00DE1E62 /* blockerList.json */; };
+		8866080A1FE130AB00DE1E62 /* ContentBlockerRequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 886608091FE130AB00DE1E62 /* ContentBlockerRequestHandler.m */; };
+		8866080E1FE130AB00DE1E62 /* MyBlocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 886608041FE130AB00DE1E62 /* MyBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8866083D1FE2838900DE1E62 /* HTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8866083C1FE2838900DE1E62 /* HTTableViewCell.m */; };
+		A19C7DEBD192C732B38738C2 /* libPods-HTBlocker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F23F09B47EBB4AF1CA43AD /* libPods-HTBlocker.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8866080C1FE130AB00DE1E62 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 886607DF1FE1308500DE1E62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 886608031FE130AB00DE1E62;
+			remoteInfo = MyBlocker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		886608121FE130AB00DE1E62 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8866080E1FE130AB00DE1E62 /* MyBlocker.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		08F23F09B47EBB4AF1CA43AD /* libPods-HTBlocker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HTBlocker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7124497984204A49B3AF6C82 /* Pods-HTBlocker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTBlocker.release.xcconfig"; path = "Pods/Target Support Files/Pods-HTBlocker/Pods-HTBlocker.release.xcconfig"; sourceTree = "<group>"; };
+		886607E71FE1308500DE1E62 /* HTBlocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTBlocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		886607EA1FE1308500DE1E62 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		886607EB1FE1308500DE1E62 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		886607ED1FE1308500DE1E62 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		886607EE1FE1308500DE1E62 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		886607F11FE1308500DE1E62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		886607F31FE1308500DE1E62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		886607F61FE1308500DE1E62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		886607F81FE1308500DE1E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		886607F91FE1308500DE1E62 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		886608041FE130AB00DE1E62 /* MyBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyBlocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		886608061FE130AB00DE1E62 /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
+		886608081FE130AB00DE1E62 /* ContentBlockerRequestHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentBlockerRequestHandler.h; sourceTree = "<group>"; };
+		886608091FE130AB00DE1E62 /* ContentBlockerRequestHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentBlockerRequestHandler.m; sourceTree = "<group>"; };
+		8866080B1FE130AB00DE1E62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8866083B1FE2838900DE1E62 /* HTTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTableViewCell.h; sourceTree = "<group>"; };
+		8866083C1FE2838900DE1E62 /* HTTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTableViewCell.m; sourceTree = "<group>"; };
+		D6900F1512B7C5AC22A31477 /* Pods-HTBlocker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTBlocker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HTBlocker/Pods-HTBlocker.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		886607E41FE1308500DE1E62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A19C7DEBD192C732B38738C2 /* libPods-HTBlocker.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		886608011FE130AB00DE1E62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40429DE5FDA0AA05F762AE39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D6900F1512B7C5AC22A31477 /* Pods-HTBlocker.debug.xcconfig */,
+				7124497984204A49B3AF6C82 /* Pods-HTBlocker.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		57AA6A8F01F822CA07E0F755 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				08F23F09B47EBB4AF1CA43AD /* libPods-HTBlocker.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		886607DE1FE1308500DE1E62 = {
+			isa = PBXGroup;
+			children = (
+				886607E91FE1308500DE1E62 /* HTBlocker */,
+				886608051FE130AB00DE1E62 /* MyBlocker */,
+				886607E81FE1308500DE1E62 /* Products */,
+				40429DE5FDA0AA05F762AE39 /* Pods */,
+				57AA6A8F01F822CA07E0F755 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		886607E81FE1308500DE1E62 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				886607E71FE1308500DE1E62 /* HTBlocker.app */,
+				886608041FE130AB00DE1E62 /* MyBlocker.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		886607E91FE1308500DE1E62 /* HTBlocker */ = {
+			isa = PBXGroup;
+			children = (
+				886607EA1FE1308500DE1E62 /* AppDelegate.h */,
+				886607EB1FE1308500DE1E62 /* AppDelegate.m */,
+				886607ED1FE1308500DE1E62 /* ViewController.h */,
+				886607EE1FE1308500DE1E62 /* ViewController.m */,
+				886607F01FE1308500DE1E62 /* Main.storyboard */,
+				886607F31FE1308500DE1E62 /* Assets.xcassets */,
+				886607F51FE1308500DE1E62 /* LaunchScreen.storyboard */,
+				886607F81FE1308500DE1E62 /* Info.plist */,
+				886607F91FE1308500DE1E62 /* main.m */,
+				8866083B1FE2838900DE1E62 /* HTTableViewCell.h */,
+				8866083C1FE2838900DE1E62 /* HTTableViewCell.m */,
+			);
+			path = HTBlocker;
+			sourceTree = "<group>";
+		};
+		886608051FE130AB00DE1E62 /* MyBlocker */ = {
+			isa = PBXGroup;
+			children = (
+				886608061FE130AB00DE1E62 /* blockerList.json */,
+				886608081FE130AB00DE1E62 /* ContentBlockerRequestHandler.h */,
+				886608091FE130AB00DE1E62 /* ContentBlockerRequestHandler.m */,
+				8866080B1FE130AB00DE1E62 /* Info.plist */,
+			);
+			path = MyBlocker;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		886607E61FE1308500DE1E62 /* HTBlocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 886607FD1FE1308500DE1E62 /* Build configuration list for PBXNativeTarget "HTBlocker" */;
+			buildPhases = (
+				1E5F2F6C6CB850FB2FF55753 /* [CP] Check Pods Manifest.lock */,
+				886607E31FE1308500DE1E62 /* Sources */,
+				886607E41FE1308500DE1E62 /* Frameworks */,
+				886607E51FE1308500DE1E62 /* Resources */,
+				886608121FE130AB00DE1E62 /* Embed App Extensions */,
+				05F22D0E98E71B991ADA74BD /* [CP] Embed Pods Frameworks */,
+				6E4FD8BC15AE5D5723227641 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8866080D1FE130AB00DE1E62 /* PBXTargetDependency */,
+			);
+			name = HTBlocker;
+			productName = HTBlocker;
+			productReference = 886607E71FE1308500DE1E62 /* HTBlocker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		886608031FE130AB00DE1E62 /* MyBlocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8866080F1FE130AB00DE1E62 /* Build configuration list for PBXNativeTarget "MyBlocker" */;
+			buildPhases = (
+				886608001FE130AB00DE1E62 /* Sources */,
+				886608011FE130AB00DE1E62 /* Frameworks */,
+				886608021FE130AB00DE1E62 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyBlocker;
+			productName = MyBlocker;
+			productReference = 886608041FE130AB00DE1E62 /* MyBlocker.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		886607DF1FE1308500DE1E62 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = iMac;
+				TargetAttributes = {
+					886607E61FE1308500DE1E62 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					886608031FE130AB00DE1E62 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 886607E21FE1308500DE1E62 /* Build configuration list for PBXProject "HTBlocker" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 886607DE1FE1308500DE1E62;
+			productRefGroup = 886607E81FE1308500DE1E62 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				886607E61FE1308500DE1E62 /* HTBlocker */,
+				886608031FE130AB00DE1E62 /* MyBlocker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		886607E51FE1308500DE1E62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				886607F71FE1308500DE1E62 /* LaunchScreen.storyboard in Resources */,
+				886607F41FE1308500DE1E62 /* Assets.xcassets in Resources */,
+				886607F21FE1308500DE1E62 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		886608021FE130AB00DE1E62 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				886608071FE130AB00DE1E62 /* blockerList.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05F22D0E98E71B991ADA74BD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HTBlocker/Pods-HTBlocker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1E5F2F6C6CB850FB2FF55753 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6E4FD8BC15AE5D5723227641 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HTBlocker/Pods-HTBlocker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		886607E31FE1308500DE1E62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				886607EF1FE1308500DE1E62 /* ViewController.m in Sources */,
+				886607FA1FE1308500DE1E62 /* main.m in Sources */,
+				886607EC1FE1308500DE1E62 /* AppDelegate.m in Sources */,
+				8866083D1FE2838900DE1E62 /* HTTableViewCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		886608001FE130AB00DE1E62 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8866080A1FE130AB00DE1E62 /* ContentBlockerRequestHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8866080D1FE130AB00DE1E62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 886608031FE130AB00DE1E62 /* MyBlocker */;
+			targetProxy = 8866080C1FE130AB00DE1E62 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		886607F01FE1308500DE1E62 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				886607F11FE1308500DE1E62 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		886607F51FE1308500DE1E62 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				886607F61FE1308500DE1E62 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		886607FB1FE1308500DE1E62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		886607FC1FE1308500DE1E62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		886607FE1FE1308500DE1E62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6900F1512B7C5AC22A31477 /* Pods-HTBlocker.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59984VM674;
+				INFOPLIST_FILE = HTBlocker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = helloted.HTBlocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		886607FF1FE1308500DE1E62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7124497984204A49B3AF6C82 /* Pods-HTBlocker.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59984VM674;
+				INFOPLIST_FILE = HTBlocker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = helloted.HTBlocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		886608101FE130AB00DE1E62 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59984VM674;
+				INFOPLIST_FILE = MyBlocker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = helloted.HTBlocker.MyBlocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		886608111FE130AB00DE1E62 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 59984VM674;
+				INFOPLIST_FILE = MyBlocker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = helloted.HTBlocker.MyBlocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		886607E21FE1308500DE1E62 /* Build configuration list for PBXProject "HTBlocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				886607FB1FE1308500DE1E62 /* Debug */,
+				886607FC1FE1308500DE1E62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		886607FD1FE1308500DE1E62 /* Build configuration list for PBXNativeTarget "HTBlocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				886607FE1FE1308500DE1E62 /* Debug */,
+				886607FF1FE1308500DE1E62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8866080F1FE130AB00DE1E62 /* Build configuration list for PBXNativeTarget "MyBlocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				886608101FE130AB00DE1E62 /* Debug */,
+				886608111FE130AB00DE1E62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 886607DF1FE1308500DE1E62 /* Project object */;
+}

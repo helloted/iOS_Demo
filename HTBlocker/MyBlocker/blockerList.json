@@ -1,0 +1,30 @@
+[
+    {
+        "action": {
+            "type": "block"
+        },
+        "trigger": {
+            "url-filter": "webkit.svg"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div.c-container ec_resitem ec-new2 ec_wise_pp ec_adv_last "
+        },
+        "trigger": {
+            "url-filter": "baidu.com/"
+        }
+
+    },
+    {
+         "action": {
+             "type": "css-display-none",
+             "selector": "div.ec_ad_results"
+         },
+         "trigger": {
+             "url-filter": "baidu.com/"
+         }
+     }
+ 
+]
