@@ -34,7 +34,7 @@ alpha:1.0]
     
     
     UILabel *label_1 = [[UILabel alloc]init];
-    label_1.font = [UIFont boldSystemFontOfSize:16];
+    label_1.font = [UIFont boldSystemFontOfSize:18];
     label_1.textColor = RGBFromHex(0x444444);
     [_scrollView addSubview:label_1];
     [label_1 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -58,7 +58,7 @@ alpha:1.0]
     
 
     UILabel *label_2 = [[UILabel alloc]init];
-    label_2.font = [UIFont boldSystemFontOfSize:16];
+    label_2.font = [UIFont boldSystemFontOfSize:18];
     label_2.textColor = RGBFromHex(0x444444);
     [_scrollView addSubview:label_2];
     [label_2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -83,7 +83,7 @@ alpha:1.0]
     
     UILabel *label_3 = [[UILabel alloc]init];
     label_3.textColor = RGBFromHex(0x444444);
-    label_3.font = [UIFont boldSystemFontOfSize:16];
+    label_3.font = [UIFont boldSystemFontOfSize:18];
     [_scrollView addSubview:label_3];
     [label_3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_scrollView.mas_left).offset(Margin);
@@ -106,7 +106,7 @@ alpha:1.0]
     
     UILabel *label_4 = [[UILabel alloc]init];
     label_4.textColor = RGBFromHex(0x444444);
-    label_4.font = [UIFont boldSystemFontOfSize:16];
+    label_4.font = [UIFont boldSystemFontOfSize:18];
     [_scrollView addSubview:label_4];
     [label_4 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_scrollView.mas_left).offset(Margin);
@@ -130,7 +130,7 @@ alpha:1.0]
     
     UILabel *label_5 = [[UILabel alloc]init];
     label_5.textColor = RGBFromHex(0x444444);
-    label_5.font = [UIFont boldSystemFontOfSize:16];
+    label_5.font = [UIFont boldSystemFontOfSize:18];
     [_scrollView addSubview:label_5];
     [label_5 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_scrollView.mas_left).offset(Margin);
