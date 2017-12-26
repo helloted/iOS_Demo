@@ -1,4 +1,21 @@
-[{
+ [    {
+  
+  "action": {
+  
+  "type": "css-display-none",
+  
+  "selector":"div#taw"
+  
+  },
+  
+  "trigger": {
+  
+  "url-filter": "google.com"
+  
+  }
+  
+  },
+ {
 	"action": {
 		"type": "css-display-none",
 		"selector": "divIFRAME[id=\"cproIframe2001\"]"

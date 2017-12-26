@@ -138,7 +138,7 @@ alpha:1.0]
         make.top.equalTo(imageView_4.mas_bottom).offset(15);
         make.height.equalTo(@30);
     }];
-    label_5.text = @"至此，已经成功拦截浏览器广告";
+    label_5.text = @"至此，已经成功拦截浏览器的部分广告";
 
 }
 
