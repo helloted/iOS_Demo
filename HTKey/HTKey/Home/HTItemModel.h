@@ -10,8 +10,9 @@
 
 @interface HTItemModel : NSObject <NSCoding>
 
-@property (nonatomic, strong)UIImage   *icon;
+@property (nonatomic, copy)NSString    *type;
 @property (nonatomic, copy)NSString    *title;
 @property (nonatomic, copy)NSString    *account;
+@property (nonatomic, copy)NSString    *password;
 
 @end

@@ -41,7 +41,7 @@
             make.left.mas_equalTo(self.mas_left).offset(FitFloat(20));
             make.centerY.mas_equalTo(self.mas_centerY);
         }];
-        _iconView.title = @"支付";
+        _iconView.title = @"默认";
         
         _titleView = [[UILabel alloc]init];
         [self addSubview:_titleView];
@@ -71,6 +71,9 @@
 
 - (void)setModel:(HTItemModel *)model{
     _model = model;
+    _titleView.text = _model.title;
+    _accountView.text = _model.account;
+    _iconView.title = _model.title;
 }
 
 

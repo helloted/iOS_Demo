@@ -16,6 +16,7 @@
 
 #import <Masonry.h>
 #import <BlocksKit/BlocksKit+UIKit.h>
+#import <SVProgressHUD-0.8.1/SVProgressHUD.h>
 
 
 #ifndef __OPTIMIZE__

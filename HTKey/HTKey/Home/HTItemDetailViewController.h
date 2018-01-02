@@ -7,7 +7,10 @@
 //
 
 #import "HTSuperViewController.h"
+#import "HTItemModel.h"
 
 @interface HTItemDetailViewController : HTSuperViewController
+
+@property (nonatomic, strong)HTItemModel  *model;
 
 @end

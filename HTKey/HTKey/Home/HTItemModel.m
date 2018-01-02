@@ -13,17 +13,21 @@
 //解档
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if ([super init]) {
-//        self.avatar = [aDecoder decodeObjectForKey:@"avatar"];
-//        self.name = [aDecoder decodeObjectForKey:@"name"];
-//        self.age = [aDecoder decodeIntegerForKey:@"age"];
+        _type = [aDecoder decodeObjectForKey:@"type"];
+        _title = [aDecoder decodeObjectForKey:@"title"];
+        _account = [aDecoder decodeObjectForKey:@"account"];
+        _password = [aDecoder decodeObjectForKey:@"password"];
     }
     return self;
 }
+
+
 //归档
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-//    [aCoder encodeObject:self.avatar forKey:@"avatar"];
-//    [aCoder encodeObject:self.name forKey:@"name"];
-//    [aCoder encodeInteger:self.age forKey:@"age"];
+    [aCoder encodeObject:_title forKey:@"title"];
+    [aCoder encodeObject:_type forKey:@"type"];
+    [aCoder encodeObject:_account forKey:@"account"];
+    [aCoder encodeObject:_password forKey:@"password"];
 }
 
 @end

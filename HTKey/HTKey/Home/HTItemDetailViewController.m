@@ -8,13 +8,18 @@
 
 #import "HTItemDetailViewController.h"
 
-@interface HTItemDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HTItemDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property (nonatomic, strong)UITableView  *tableView;
 @property (nonatomic, copy)NSArray        *headTitles;
 @property (nonatomic, copy)NSArray        *rowCount;
 @property (nonatomic, assign)CGFloat      headHeight;
 @property (nonatomic, assign)CGFloat      cellHeight;
+@property (nonatomic, strong)UIButton     *cancelBtn;
+@property (nonatomic, strong)UIButton     *saveBtn;
+@property (nonatomic, strong)UITextField  *titleField;
+@property (nonatomic, strong)UITextField  *accountField;
+@property (nonatomic, strong)UITextField  *passwordField;
 
 @end
 
@@ -22,16 +27,66 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.cancelBtn];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.saveBtn];
     _headTitles = @[@"类型",@"内容",@"备注"];
     _rowCount = @[@1,@3,@1];
     _headHeight = 35;
     _cellHeight = 50;
-    _tableView = [[UITableView alloc]initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    UITableViewController *tvc = [[UITableViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    [self addChildViewController:tvc];
+    _tableView = tvc.tableView;
+    _tableView.frame = self.view.bounds;
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.tableFooterView = [UIView new];
     [self.view addSubview:_tableView];
+}
+
+
+- (UIButton *)cancelBtn{
+    if (!_cancelBtn) {
+        _cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _cancelBtn.frame = CGRectMake(0, 0, 40, 20);
+        [_cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [_cancelBtn bk_addEventHandler:^(id sender) {
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"保存本次编辑？" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self cancelSave];
+            }];
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self saveData];
+            }];
+            [alertController addAction:cancelAction];
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:NO completion:nil];
+        } forControlEvents:UIControlEventTouchDown];
+    }
+    return _cancelBtn;
+}
+
+- (void)cancelSave{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIButton *)saveBtn{
+    if (!_saveBtn) {
+        _saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _saveBtn.frame = CGRectMake(0, 0, 40, 20);
+        [_saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+        [_saveBtn bk_addEventHandler:^(id sender) {
+            [self saveData];
+        } forControlEvents:UIControlEventTouchDown];
+    }
+    return _saveBtn;
+}
+
+- (void)saveData{
+    self.model.type = @"APP";
+    self.model.title = _titleField.text;
+    self.model.account = _accountField.text;
+    self.model.password = _passwordField.text;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -75,9 +130,6 @@
         CGFloat filedX = FitFloat(65);
         CGFloat copyW = FitFloat(50);
         CGFloat filedW = UI_WIDTH - filedX - copyW;
-        UITextField *filed = [[UITextField alloc]initWithFrame:CGRectMake(filedX, 0, filedW, _cellHeight)];
-        filed.clearButtonMode=UITextFieldViewModeWhileEditing;
-        [cell addSubview:filed];
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setImage:[UIImage imageNamed:@"copy"] forState:UIControlStateNormal];
@@ -88,20 +140,42 @@
             make.centerY.mas_equalTo(cell.mas_centerY);
         }];
         
-        [button bk_addEventHandler:^(id sender) {
-            UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
-            pasteboard.string= filed.text;
-        } forControlEvents:UIControlEventTouchUpInside];
-        
         if (indexPath.row==0) {
             cell.textLabel.text = @"标题:";
-            filed.placeholder = @"请输入标题...";
+            _titleField = [[UITextField alloc]initWithFrame:CGRectMake(filedX, 0, filedW, _cellHeight)];
+            _titleField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            _titleField.placeholder = @"请输入标题...";
+            _titleField.text = self.model.title;
+            [cell addSubview:_titleField];
+            [button bk_addEventHandler:^(id sender) {
+                UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
+                pasteboard.string= _titleField.text;
+                [SVProgressHUD showSuccessWithStatus:@"已拷贝"];
+            } forControlEvents:UIControlEventTouchUpInside];
         }else if (indexPath.row==1){
             cell.textLabel.text = @"账号:";
-            filed.placeholder = @"请输入账号...";
+            _accountField = [[UITextField alloc]initWithFrame:CGRectMake(filedX, 0, filedW, _cellHeight)];
+            _accountField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            _accountField.placeholder = @"请输入账号...";
+            _accountField.text = self.model.account;
+            [cell addSubview:_accountField];
+            [button bk_addEventHandler:^(id sender) {
+                UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
+                pasteboard.string= _accountField.text;
+                [SVProgressHUD showSuccessWithStatus:@"已拷贝"];
+            } forControlEvents:UIControlEventTouchUpInside];
         }else if (indexPath.row==2){
             cell.textLabel.text = @"密码:";
-            filed.placeholder = @"请输入密码...";
+            _passwordField = [[UITextField alloc]initWithFrame:CGRectMake(filedX, 0, filedW, _cellHeight)];
+            _passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
+            _passwordField.placeholder = @"请输入账号...";
+            _passwordField.text = self.model.password;
+            [cell addSubview:_passwordField];
+            [button bk_addEventHandler:^(id sender) {
+                UIPasteboard*pasteboard = [UIPasteboard generalPasteboard];
+                pasteboard.string= _passwordField.text;
+                [SVProgressHUD showSuccessWithStatus:@"已拷贝"];
+            } forControlEvents:UIControlEventTouchUpInside];
         }
     }else if (indexPath.section==2&& indexPath.row==0){
         CGFloat filedX = FitFloat(10);

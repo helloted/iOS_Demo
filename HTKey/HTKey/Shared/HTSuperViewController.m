@@ -18,7 +18,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = DefaultBackGroundColor;
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 

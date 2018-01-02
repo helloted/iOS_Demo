@@ -15,15 +15,18 @@ PODS:
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
   - Masonry (1.0.2)
+  - SVProgressHUD-0.8.1 (0.8)
 
 DEPENDENCIES:
   - BlocksKit (~> 2.2.5)
   - Masonry (~> 1.0.2)
+  - SVProgressHUD-0.8.1 (<= 0.8)
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  SVProgressHUD-0.8.1: ee9e6e58b5b5ffaf3f1a62c2dc409763470df143
 
-PODFILE CHECKSUM: 8f7dd55e22d865622462a15fcfa5a056b9dec45b
+PODFILE CHECKSUM: a485095cfcc1c3990d28dc986fcc726e22e20a45
 
 COCOAPODS: 1.2.1
