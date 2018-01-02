@@ -27,6 +27,10 @@
 		8824A7A31FF618FE00A2B0BA /* HTHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8824A7A21FF618FE00A2B0BA /* HTHomeViewController.m */; };
 		8824A7A61FF6192500A2B0BA /* HTMineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8824A7A51FF6192500A2B0BA /* HTMineViewController.m */; };
 		8824A7A91FF6193B00A2B0BA /* HTTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8824A7A81FF6193B00A2B0BA /* HTTypeViewController.m */; };
+		88E4596B1FFB6BEE00D7D2D3 /* HTItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4596A1FFB6BEE00D7D2D3 /* HTItemTableViewCell.m */; };
+		88E4596E1FFB6DA300D7D2D3 /* HTItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4596D1FFB6DA300D7D2D3 /* HTItemModel.m */; };
+		88E459711FFB77B300D7D2D3 /* HTItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E459701FFB77B300D7D2D3 /* HTItemDetailViewController.m */; };
+		88E459741FFB7F3F00D7D2D3 /* RoundHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E459731FFB7F3F00D7D2D3 /* RoundHeadView.m */; };
 		ACCCBA4C6C0DD948EB900534 /* libPods-HTKey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86836CFD2073D40BE8D553AF /* libPods-HTKey.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +78,14 @@
 		8824A7A51FF6192500A2B0BA /* HTMineViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMineViewController.m; sourceTree = "<group>"; };
 		8824A7A71FF6193B00A2B0BA /* HTTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTypeViewController.h; sourceTree = "<group>"; };
 		8824A7A81FF6193B00A2B0BA /* HTTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTypeViewController.m; sourceTree = "<group>"; };
+		88E459691FFB6BEE00D7D2D3 /* HTItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTItemTableViewCell.h; sourceTree = "<group>"; };
+		88E4596A1FFB6BEE00D7D2D3 /* HTItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTItemTableViewCell.m; sourceTree = "<group>"; };
+		88E4596C1FFB6DA300D7D2D3 /* HTItemModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTItemModel.h; sourceTree = "<group>"; };
+		88E4596D1FFB6DA300D7D2D3 /* HTItemModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTItemModel.m; sourceTree = "<group>"; };
+		88E4596F1FFB77B300D7D2D3 /* HTItemDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTItemDetailViewController.h; sourceTree = "<group>"; };
+		88E459701FFB77B300D7D2D3 /* HTItemDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTItemDetailViewController.m; sourceTree = "<group>"; };
+		88E459721FFB7F3F00D7D2D3 /* RoundHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundHeadView.h; sourceTree = "<group>"; };
+		88E459731FFB7F3F00D7D2D3 /* RoundHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundHeadView.m; sourceTree = "<group>"; };
 		AC014EA0CB39D91C0A0DC408 /* Pods-HTKey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTKey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HTKey/Pods-HTKey.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +180,14 @@
 			children = (
 				8824A7A11FF618FE00A2B0BA /* HTHomeViewController.h */,
 				8824A7A21FF618FE00A2B0BA /* HTHomeViewController.m */,
+				88E459691FFB6BEE00D7D2D3 /* HTItemTableViewCell.h */,
+				88E4596A1FFB6BEE00D7D2D3 /* HTItemTableViewCell.m */,
+				88E4596C1FFB6DA300D7D2D3 /* HTItemModel.h */,
+				88E4596D1FFB6DA300D7D2D3 /* HTItemModel.m */,
+				88E4596F1FFB77B300D7D2D3 /* HTItemDetailViewController.h */,
+				88E459701FFB77B300D7D2D3 /* HTItemDetailViewController.m */,
+				88E459721FFB7F3F00D7D2D3 /* RoundHeadView.h */,
+				88E459731FFB7F3F00D7D2D3 /* RoundHeadView.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -346,6 +366,7 @@
 				8824A7921FF615FC00A2B0BA /* UITableView+FooterRefresh.m in Sources */,
 				8824A7A91FF6193B00A2B0BA /* HTTypeViewController.m in Sources */,
 				8824A7911FF615FC00A2B0BA /* UIImage+Blur.m in Sources */,
+				88E459711FFB77B300D7D2D3 /* HTItemDetailViewController.m in Sources */,
 				8824A78E1FF615FC00A2B0BA /* NSDictionary+MY.m in Sources */,
 				8824A76B1FF6146C00A2B0BA /* main.m in Sources */,
 				8824A7A31FF618FE00A2B0BA /* HTHomeViewController.m in Sources */,
@@ -355,9 +376,12 @@
 				8824A75D1FF6146C00A2B0BA /* AppDelegate.m in Sources */,
 				8824A7961FF615FC00A2B0BA /* HTUtil.m in Sources */,
 				8824A7951FF615FC00A2B0BA /* HTNavigationController.m in Sources */,
+				88E459741FFB7F3F00D7D2D3 /* RoundHeadView.m in Sources */,
 				8824A7991FF617D700A2B0BA /* HTTabBarController.m in Sources */,
 				8824A7A01FF618E500A2B0BA /* HTSuperViewController.m in Sources */,
 				8824A7901FF615FC00A2B0BA /* UIDevice+MY.m in Sources */,
+				88E4596E1FFB6DA300D7D2D3 /* HTItemModel.m in Sources */,
+				88E4596B1FFB6BEE00D7D2D3 /* HTItemTableViewCell.m in Sources */,
 				8824A7941FF615FC00A2B0BA /* UIWindow+MY.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

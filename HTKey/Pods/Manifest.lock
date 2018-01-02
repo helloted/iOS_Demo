@@ -1,12 +1,29 @@
 PODS:
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
   - Masonry (1.0.2)
 
 DEPENDENCIES:
+  - BlocksKit (~> 2.2.5)
   - Masonry (~> 1.0.2)
 
 SPEC CHECKSUMS:
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
 
-PODFILE CHECKSUM: b4173005c7e85abf9f8d0bd3582f3346bf3ec71d
+PODFILE CHECKSUM: 8f7dd55e22d865622462a15fcfa5a056b9dec45b
 
 COCOAPODS: 1.2.1

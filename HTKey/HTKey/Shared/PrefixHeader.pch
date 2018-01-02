@@ -15,6 +15,7 @@
 #import "CategoriesHeader.h"
 
 #import <Masonry.h>
+#import <BlocksKit/BlocksKit+UIKit.h>
 
 
 #ifndef __OPTIMIZE__

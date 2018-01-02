@@ -4,5 +4,6 @@ platform :ios, ‘9.0’
 target ‘HTKey’ do
 
 pod 'Masonry', '~> 1.0.2'
+pod 'BlocksKit', '~> 2.2.5'
 
 end
