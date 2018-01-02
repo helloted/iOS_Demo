@@ -129,16 +129,17 @@ alpha:1.0]
     
     
     UILabel *label_5 = [[UILabel alloc]init];
+    label_5.numberOfLines = 0;
     label_5.textColor = RGBFromHex(0x444444);
     label_5.font = [UIFont boldSystemFontOfSize:18];
     [_scrollView addSubview:label_5];
     [label_5 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_scrollView.mas_left).offset(Margin);
-        make.right.equalTo(_scrollView.mas_right).offset(-Margin);
+        make.right.equalTo(self.view.mas_right).offset(-Margin);
         make.top.equalTo(imageView_4.mas_bottom).offset(15);
-        make.height.equalTo(@30);
     }];
-    label_5.text = @"至此，已经成功拦截浏览器的部分广告";
+    label_5.text = @"至此，已经成功拦截百度谷歌等网站的部分广告";
+    [label_5 sizeToFit];
 
 }
 
