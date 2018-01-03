@@ -31,6 +31,7 @@
 		88E4596E1FFB6DA300D7D2D3 /* HTItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4596D1FFB6DA300D7D2D3 /* HTItemModel.m */; };
 		88E459711FFB77B300D7D2D3 /* HTItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E459701FFB77B300D7D2D3 /* HTItemDetailViewController.m */; };
 		88E459741FFB7F3F00D7D2D3 /* RoundHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E459731FFB7F3F00D7D2D3 /* RoundHeadView.m */; };
+		88E459781FFC7C6400D7D2D3 /* HTTypeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E459771FFC7C6400D7D2D3 /* HTTypeDetailViewController.m */; };
 		ACCCBA4C6C0DD948EB900534 /* libPods-HTKey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86836CFD2073D40BE8D553AF /* libPods-HTKey.a */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,8 @@
 		88E459701FFB77B300D7D2D3 /* HTItemDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTItemDetailViewController.m; sourceTree = "<group>"; };
 		88E459721FFB7F3F00D7D2D3 /* RoundHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RoundHeadView.h; sourceTree = "<group>"; };
 		88E459731FFB7F3F00D7D2D3 /* RoundHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundHeadView.m; sourceTree = "<group>"; };
+		88E459761FFC7C6400D7D2D3 /* HTTypeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTypeDetailViewController.h; sourceTree = "<group>"; };
+		88E459771FFC7C6400D7D2D3 /* HTTypeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTypeDetailViewController.m; sourceTree = "<group>"; };
 		AC014EA0CB39D91C0A0DC408 /* Pods-HTKey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTKey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HTKey/Pods-HTKey.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +209,8 @@
 			children = (
 				8824A7A71FF6193B00A2B0BA /* HTTypeViewController.h */,
 				8824A7A81FF6193B00A2B0BA /* HTTypeViewController.m */,
+				88E459761FFC7C6400D7D2D3 /* HTTypeDetailViewController.h */,
+				88E459771FFC7C6400D7D2D3 /* HTTypeDetailViewController.m */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -379,6 +384,7 @@
 				88E459741FFB7F3F00D7D2D3 /* RoundHeadView.m in Sources */,
 				8824A7991FF617D700A2B0BA /* HTTabBarController.m in Sources */,
 				8824A7A01FF618E500A2B0BA /* HTSuperViewController.m in Sources */,
+				88E459781FFC7C6400D7D2D3 /* HTTypeDetailViewController.m in Sources */,
 				8824A7901FF615FC00A2B0BA /* UIDevice+MY.m in Sources */,
 				88E4596E1FFB6DA300D7D2D3 /* HTItemModel.m in Sources */,
 				88E4596B1FFB6BEE00D7D2D3 /* HTItemTableViewCell.m in Sources */,

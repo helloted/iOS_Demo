@@ -9,13 +9,14 @@
 #import "HTHomeViewController.h"
 #import "HTItemTableViewCell.h"
 #import "HTItemDetailViewController.h"
+#import "AppDelegate.h"
 
-@interface HTHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HTHomeViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 
 @property(nonatomic, strong)UIButton   *addBtn;
 @property(nonatomic, strong)UIButton   *searchBtn;
 @property(nonatomic, strong)UITableView *tableView;
-@property(nonatomic, strong)NSMutableArray   *items;
+@property(nonatomic, strong)UISearchBar *searchBar;
 
 @end
 
@@ -26,8 +27,6 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchBtn];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.addBtn];
     [self.view addSubview:self.tableView];
-    [self unArchiverAllData];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(archiverAllData) name:UIApplicationWillTerminateNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -35,20 +34,11 @@
     [self.tableView reloadData];
 }
 
-- (void)archiverAllData{
-    NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"all"];
-    [NSKeyedArchiver archiveRootObject:self.items toFile:file];
-}
-
-- (void)unArchiverAllData{
-    NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"all"];
-    self.items = [NSKeyedUnarchiver unarchiveObjectWithFile:file];
-}
-
-
+#pragma mark UITableView Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.items.count;
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    return app.items.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -58,13 +48,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HTItemTableViewCell *cell = [HTItemTableViewCell cellWithTableView:tableView];
-    cell.model = self.items[indexPath.row];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    cell.model = app.items[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     HTItemDetailViewController *detailVC = [[HTItemDetailViewController alloc]init];
-    detailVC.model = self.items[indexPath.row];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    detailVC.model = app.items[indexPath.row];
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -73,19 +65,35 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // 删除模型
-    [self.items removeObjectAtIndex:indexPath.row];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [app.items removeObjectAtIndex:indexPath.row];
     // 刷新
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
 }
 
-/**
- *  修改Delete按钮文字为“删除”
- */
+
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return @"删除";
 }
 
+
+#pragma mark UISearchBar Delegate
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [self cancelSearch];
+}
+
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    [self cancelSearch];
+    return YES;
+}
+
+- (void)cancelSearch{
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchBtn];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.addBtn];
+    self.navigationItem.titleView = nil;
+}
 
 #pragma mark Getter
 
@@ -107,7 +115,10 @@
         _searchBtn.frame = CGRectMake(0, 0, FitFloat(20), FitFloat(20));
         [_searchBtn setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
         [_searchBtn bk_addEventHandler:^(id sender) {
-            [self archiverAllData];
+            self.navigationItem.titleView = self.searchBar;
+            self.navigationItem.leftBarButtonItem = nil;
+            self.navigationItem.rightBarButtonItem = nil;
+            [self.searchBar becomeFirstResponder];
         } forControlEvents:UIControlEventTouchDown];
     }
     return _searchBtn;
@@ -120,7 +131,8 @@
         [_addBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
         [_addBtn bk_addEventHandler:^(id sender) {
             HTItemModel *newModel = [[HTItemModel alloc]init];
-            [self.items addObject:newModel];
+            AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [app.items addObject:newModel];
             HTItemDetailViewController *detailVC = [[HTItemDetailViewController alloc]init];
             detailVC.hidesBottomBarWhenPushed = YES;
             detailVC.model = newModel;
@@ -130,11 +142,14 @@
     return _addBtn;
 }
 
-- (NSMutableArray *)items{
-    if (!_items) {
-        _items = [NSMutableArray array];
+- (UISearchBar *)searchBar{
+    if (!_searchBar) {
+        _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, UI_WIDTH, kNavBarHeight)];
+        [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitle:@"取消"];
+        _searchBar.showsCancelButton = YES;
+        _searchBar.delegate = self;
     }
-    return _items;
+    return _searchBar;
 }
 
 

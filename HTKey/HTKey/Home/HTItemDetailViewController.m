@@ -29,6 +29,7 @@
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.cancelBtn];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.saveBtn];
+    
     _headTitles = @[@"类型",@"内容",@"备注"];
     _rowCount = @[@1,@3,@1];
     _headHeight = 35;
@@ -50,19 +51,31 @@
         _cancelBtn.frame = CGRectMake(0, 0, 40, 20);
         [_cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
         [_cancelBtn bk_addEventHandler:^(id sender) {
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"保存本次编辑？" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self cancelSave];
-            }];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                [self saveData];
-            }];
-            [alertController addAction:cancelAction];
-            [alertController addAction:okAction];
-            [self presentViewController:alertController animated:NO completion:nil];
+            [self cancelBtnClicked];
         } forControlEvents:UIControlEventTouchDown];
     }
     return _cancelBtn;
+}
+
+- (void)cancelBtnClicked{
+    BOOL title = [_model.title isEqualToString:_titleField.text];
+    BOOL account = [_model.account isEqualToString:_accountField.text];
+    BOOL password = [_model.password isEqualToString:_passwordField.text];
+    if (title && account && password) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        NSLog(@"%@,%@",_model.title,_titleField.text);
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:@"保存本次编辑？" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self cancelSave];
+        }];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self saveData];
+        }];
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:NO completion:nil];
+    }
 }
 
 - (void)cancelSave{

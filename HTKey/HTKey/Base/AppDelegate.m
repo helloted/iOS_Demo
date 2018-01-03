@@ -17,8 +17,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"all"];
+    NSArray *items = [NSKeyedUnarchiver unarchiveObjectWithFile:file];
+    self.items = [NSMutableArray arrayWithArray:items];
+    
     HTTabBarController *tab = [[HTTabBarController alloc]init];
     self.window.rootViewController = tab;
+    
     return YES;
 }
 
@@ -46,6 +51,8 @@
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    NSString *file = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).firstObject stringByAppendingPathComponent:@"all"];
+    [NSKeyedArchiver archiveRootObject:self.items toFile:file];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

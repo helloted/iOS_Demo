@@ -15,4 +15,7 @@ extern CGFloat FitFloat(CGFloat f);
 extern CGFloat FitArray(NSArray *plist);
 extern UIFont *FitFont(CGFloat font);
 
++(UIImage *)imageResizeFromImage:(UIImage *)image
+                          toSize:(CGSize)reSize;
+
 @end

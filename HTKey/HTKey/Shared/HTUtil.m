@@ -67,5 +67,16 @@ inline UIFont *FitFont(CGFloat font)
     return [UIFont systemFontOfSize:f];
 }
 
++(UIImage *)imageResizeFromImage:(UIImage *)image
+                          toSize:(CGSize)reSize
+{
+    UIGraphicsBeginImageContextWithOptions(reSize, NO, 2.0f);
+    [image drawInRect:CGRectMake(0, 0, reSize.width, reSize.height)];
+    UIImage *reSizeImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return reSizeImage;
+}
+
+
 
 @end
