@@ -17,6 +17,7 @@
 @property (nonatomic, assign)CGFloat      cellHeight;
 @property (nonatomic, strong)UIButton     *cancelBtn;
 @property (nonatomic, strong)UIButton     *saveBtn;
+@property (nonatomic, strong)UIButton     *editBtn;
 @property (nonatomic, strong)UITextField  *titleField;
 @property (nonatomic, strong)UITextField  *accountField;
 @property (nonatomic, strong)UITextField  *passwordField;
@@ -27,9 +28,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.cancelBtn];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.saveBtn];
-    
     _headTitles = @[@"类型",@"内容",@"备注"];
     _rowCount = @[@1,@3,@1];
     _headHeight = 35;
@@ -42,8 +40,22 @@
     _tableView.dataSource = self;
     _tableView.tableFooterView = [UIView new];
     [self.view addSubview:_tableView];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+- (void)setEdit:(BOOL)edit{
+    _edit = edit;
+    if (_edit) {
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.cancelBtn];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.saveBtn];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        [self.titleField becomeFirstResponder];
+    }else{
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.editBtn];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    }
+}
 
 - (UIButton *)cancelBtn{
     if (!_cancelBtn) {
@@ -140,7 +152,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = @"APP";
     }else if (indexPath.section==1){
-        CGFloat filedX = FitFloat(65);
+        CGFloat filedX = FitFloat(70);
         CGFloat copyW = FitFloat(50);
         CGFloat filedW = UI_WIDTH - filedX - copyW;
         
@@ -154,7 +166,7 @@
         }];
         
         if (indexPath.row==0) {
-            cell.textLabel.text = @"标题:";
+            cell.textLabel.text = @"标题：";
             _titleField = [[UITextField alloc]initWithFrame:CGRectMake(filedX, 0, filedW, _cellHeight)];
             _titleField.clearButtonMode = UITextFieldViewModeWhileEditing;
             _titleField.placeholder = @"请输入标题...";
@@ -208,6 +220,18 @@
         }];
     }
     return cell;
+}
+
+- (UIButton *)editBtn{
+    if (!_editBtn) {
+        _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _editBtn.frame = CGRectMake(0, 0, 40, 20);
+        [_editBtn setTitle:@"编辑" forState:UIControlStateNormal];
+        [_editBtn bk_addEventHandler:^(id sender) {
+            self.edit = YES;
+        } forControlEvents:UIControlEventTouchDown];
+    }
+    return _editBtn;
 }
 
 - (void)didReceiveMemoryWarning {

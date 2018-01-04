@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong)HTItemModel  *model;
 
+@property (nonatomic, assign)BOOL   edit;
+
 @end

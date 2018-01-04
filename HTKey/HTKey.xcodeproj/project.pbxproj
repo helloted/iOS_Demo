@@ -32,6 +32,7 @@
 		88E459711FFB77B300D7D2D3 /* HTItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E459701FFB77B300D7D2D3 /* HTItemDetailViewController.m */; };
 		88E459741FFB7F3F00D7D2D3 /* RoundHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E459731FFB7F3F00D7D2D3 /* RoundHeadView.m */; };
 		88E459781FFC7C6400D7D2D3 /* HTTypeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E459771FFC7C6400D7D2D3 /* HTTypeDetailViewController.m */; };
+		88E4597B1FFCC91C00D7D2D3 /* HTAuthenticaTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E4597A1FFCC91C00D7D2D3 /* HTAuthenticaTool.m */; };
 		ACCCBA4C6C0DD948EB900534 /* libPods-HTKey.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86836CFD2073D40BE8D553AF /* libPods-HTKey.a */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +90,9 @@
 		88E459731FFB7F3F00D7D2D3 /* RoundHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RoundHeadView.m; sourceTree = "<group>"; };
 		88E459761FFC7C6400D7D2D3 /* HTTypeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTypeDetailViewController.h; sourceTree = "<group>"; };
 		88E459771FFC7C6400D7D2D3 /* HTTypeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTTypeDetailViewController.m; sourceTree = "<group>"; };
+		88E459791FFCC91C00D7D2D3 /* HTAuthenticaTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTAuthenticaTool.h; sourceTree = "<group>"; };
+		88E4597A1FFCC91C00D7D2D3 /* HTAuthenticaTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTAuthenticaTool.m; sourceTree = "<group>"; };
+		88E4597C1FFCE38E00D7D2D3 /* HTKey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HTKey.entitlements; sourceTree = "<group>"; };
 		AC014EA0CB39D91C0A0DC408 /* Pods-HTKey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HTKey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HTKey/Pods-HTKey.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +129,7 @@
 		8824A75A1FF6146C00A2B0BA /* HTKey */ = {
 			isa = PBXGroup;
 			children = (
+				88E4597C1FFCE38E00D7D2D3 /* HTKey.entitlements */,
 				8824A79D1FF6188100A2B0BA /* Base */,
 				8824A79A1FF6185A00A2B0BA /* Home */,
 				8824A79B1FF6185A00A2B0BA /* Mine */,
@@ -150,6 +155,8 @@
 				8824A7981FF617D700A2B0BA /* HTTabBarController.m */,
 				8824A79E1FF618E500A2B0BA /* HTSuperViewController.h */,
 				8824A79F1FF618E500A2B0BA /* HTSuperViewController.m */,
+				88E459791FFCC91C00D7D2D3 /* HTAuthenticaTool.h */,
+				88E4597A1FFCC91C00D7D2D3 /* HTAuthenticaTool.m */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -280,6 +287,11 @@
 					8824A7571FF6146C00A2B0BA = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -389,6 +401,7 @@
 				88E4596E1FFB6DA300D7D2D3 /* HTItemModel.m in Sources */,
 				88E4596B1FFB6BEE00D7D2D3 /* HTItemTableViewCell.m in Sources */,
 				8824A7941FF615FC00A2B0BA /* UIWindow+MY.m in Sources */,
+				88E4597B1FFCC91C00D7D2D3 /* HTAuthenticaTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,6 +536,7 @@
 			baseConfigurationReference = AC014EA0CB39D91C0A0DC408 /* Pods-HTKey.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HTKey/HTKey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HYZE4HN4M4;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/HTKey/Shared/PrefixHeader.pch";
@@ -540,6 +554,7 @@
 			baseConfigurationReference = 0E98AB7B4F0C43135AF77242 /* Pods-HTKey.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HTKey/HTKey.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HYZE4HN4M4;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/HTKey/Shared/PrefixHeader.pch";

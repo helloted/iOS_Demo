@@ -71,6 +71,7 @@
         HTItemDetailViewController *detailVC = [[HTItemDetailViewController alloc]init];
         detailVC.model = model;
         detailVC.hidesBottomBarWhenPushed = YES;
+        detailVC.edit = NO;
         [self.navigationController pushViewController:detailVC animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }

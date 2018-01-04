@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HTTabBarController.h"
+#import "HTAuthenticaTool.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,9 @@
     
     HTTabBarController *tab = [[HTTabBarController alloc]init];
     self.window.rootViewController = tab;
+    [self.window makeKeyAndVisible];
+    
+    [HTAuthenticaTool startAuth];
     
     return YES;
 }
@@ -41,6 +45,7 @@
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    [HTAuthenticaTool startAuth];
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }
 

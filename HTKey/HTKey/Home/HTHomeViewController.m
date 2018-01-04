@@ -57,6 +57,7 @@
     HTItemDetailViewController *detailVC = [[HTItemDetailViewController alloc]init];
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
     detailVC.model = app.items[indexPath.row];
+    detailVC.edit = NO;
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -135,6 +136,7 @@
             [app.items addObject:newModel];
             HTItemDetailViewController *detailVC = [[HTItemDetailViewController alloc]init];
             detailVC.hidesBottomBarWhenPushed = YES;
+            detailVC.edit = YES;
             detailVC.model = newModel;
             [self.navigationController pushViewController:detailVC animated:YES];
         } forControlEvents:UIControlEventTouchDown];
