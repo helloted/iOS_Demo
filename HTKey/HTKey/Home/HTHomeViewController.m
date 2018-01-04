@@ -13,10 +13,12 @@
 
 @interface HTHomeViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 
-@property(nonatomic, strong)UIButton   *addBtn;
-@property(nonatomic, strong)UIButton   *searchBtn;
-@property(nonatomic, strong)UITableView *tableView;
-@property(nonatomic, strong)UISearchBar *searchBar;
+@property(nonatomic, strong)UIButton        *addBtn;
+@property(nonatomic, strong)UIButton        *searchBtn;
+@property(nonatomic, strong)UITableView     *tableView;
+@property(nonatomic, strong)UISearchBar     *searchBar;
+@property(nonatomic, strong)NSMutableArray  *searchArray;
+@property(nonatomic, assign)BOOL            inSearch;
 
 @end
 
@@ -27,6 +29,8 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchBtn];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.addBtn];
     [self.view addSubview:self.tableView];
+    _inSearch = NO;
+    _searchArray = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -34,11 +38,34 @@
     [self.tableView reloadData];
 }
 
+#pragma mark Selector
+
+- (void)setInSearch:(BOOL)inSearch{
+    _inSearch = inSearch;
+    [self.tableView reloadData];
+    if (_inSearch) {
+        self.navigationItem.titleView = self.searchBar;
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.rightBarButtonItem = nil;
+        [self.searchBar becomeFirstResponder];
+    }else{
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchBtn];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.addBtn];
+        self.navigationItem.titleView = nil;
+    }
+}
+
+
+
 #pragma mark UITableView Delegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    return app.items.count;
+    if (_inSearch) {
+        return _searchArray.count;
+    }else{
+        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        return app.items.count;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -47,16 +74,28 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    HTItemTableViewCell *cell = [HTItemTableViewCell cellWithTableView:tableView];
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    cell.model = app.items[indexPath.row];
-    return cell;
+    if (_inSearch) {
+        HTItemTableViewCell *cell = [HTItemTableViewCell cellWithTableView:tableView];
+        cell.model = _searchArray[indexPath.row];
+        return cell;
+    }else{
+        HTItemTableViewCell *cell = [HTItemTableViewCell cellWithTableView:tableView];
+        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        cell.model = app.items[indexPath.row];
+        return cell;
+    }
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     HTItemDetailViewController *detailVC = [[HTItemDetailViewController alloc]init];
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    detailVC.model = app.items[indexPath.row];
+    if (_inSearch) {
+        self.inSearch = NO;
+        detailVC.model = _searchArray[indexPath.row];
+    }else{
+        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        detailVC.model = app.items[indexPath.row];
+    }
     detailVC.edit = NO;
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detailVC animated:YES];
@@ -73,6 +112,14 @@
 }
 
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (_inSearch) {
+        return UITableViewCellEditingStyleNone;
+    }else{
+        return UITableViewCellEditingStyleDelete;
+    }
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return @"删除";
@@ -82,18 +129,27 @@
 #pragma mark UISearchBar Delegate
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    [self cancelSearch];
+    self.inSearch = NO;
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
-    [self cancelSearch];
+    self.inSearch = NO;
     return YES;
 }
 
-- (void)cancelSearch{
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchBtn];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.addBtn];
-    self.navigationItem.titleView = nil;
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    [_searchArray removeAllObjects];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [app.items enumerateObjectsUsingBlock:^(HTItemModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSRange range_t = [model.title rangeOfString:searchText options:NSRegularExpressionSearch];
+        BOOL titleOK = (range_t.location != NSNotFound)?YES:NO;
+        NSRange range_a = [model.account rangeOfString:searchText options:NSRegularExpressionSearch];
+        BOOL accountOK = (range_a.location != NSNotFound)?YES:NO;
+        if (titleOK||accountOK) {
+            [_searchArray addObject:model];
+        }
+    }];
+    [self.tableView reloadData];
 }
 
 #pragma mark Getter
@@ -105,7 +161,6 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
-//        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }
@@ -116,10 +171,7 @@
         _searchBtn.frame = CGRectMake(0, 0, FitFloat(20), FitFloat(20));
         [_searchBtn setImage:[UIImage imageNamed:@"search"] forState:UIControlStateNormal];
         [_searchBtn bk_addEventHandler:^(id sender) {
-            self.navigationItem.titleView = self.searchBar;
-            self.navigationItem.leftBarButtonItem = nil;
-            self.navigationItem.rightBarButtonItem = nil;
-            [self.searchBar becomeFirstResponder];
+            self.inSearch = YES;
         } forControlEvents:UIControlEventTouchDown];
     }
     return _searchBtn;

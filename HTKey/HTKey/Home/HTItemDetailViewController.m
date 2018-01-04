@@ -7,8 +7,9 @@
 //
 
 #import "HTItemDetailViewController.h"
+#import "HTChooseTypeViewController.h"
 
-@interface HTItemDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+@interface HTItemDetailViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,HTChooseVCDelegate>
 
 @property (nonatomic, strong)UITableView  *tableView;
 @property (nonatomic, copy)NSArray        *headTitles;
@@ -21,6 +22,7 @@
 @property (nonatomic, strong)UITextField  *titleField;
 @property (nonatomic, strong)UITextField  *accountField;
 @property (nonatomic, strong)UITextField  *passwordField;
+@property (nonatomic, strong)NSString     *typeName;
 
 @end
 
@@ -29,6 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _headTitles = @[@"类型",@"内容",@"备注"];
+    _typeName = @"APP";
     _rowCount = @[@1,@3,@1];
     _headHeight = 35;
     _cellHeight = 50;
@@ -107,7 +110,7 @@
 }
 
 - (void)saveData{
-    self.model.type = @"APP";
+    self.model.type = _typeName;
     self.model.title = _titleField.text;
     self.model.account = _accountField.text;
     self.model.password = _passwordField.text;
@@ -145,12 +148,26 @@
     return _headTitles.count;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==0&&indexPath.row==0) {
+        HTChooseTypeViewController *chooseVC = [[HTChooseTypeViewController alloc]init];
+        chooseVC.delegate = self;
+        [self.navigationController pushViewController:chooseVC animated:YES];
+    }
+}
+
+- (void)didSelectType:(NSString *)type{
+    _typeName = type;
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell =  [[UITableViewCell alloc]init];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     if(indexPath.section==0 && indexPath.row ==0){
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.text = @"APP";
+        cell.textLabel.text = _typeName;
     }else if (indexPath.section==1){
         CGFloat filedX = FitFloat(70);
         CGFloat copyW = FitFloat(50);

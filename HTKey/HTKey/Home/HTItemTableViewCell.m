@@ -72,8 +72,13 @@
 - (void)setModel:(HTItemModel *)model{
     _model = model;
     _titleView.text = _model.title;
+    if (_model.title.length < 3) {
+        _iconView.title = _model.title;
+    }else{
+        _iconView.title = [_model.title substringToIndex:2];
+    }
     _accountView.text = _model.account;
-    _iconView.title = _model.title;
+    
 }
 
 

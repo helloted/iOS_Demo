@@ -14,5 +14,6 @@
 @property (nonatomic, copy)NSString    *title;
 @property (nonatomic, copy)NSString    *account;
 @property (nonatomic, copy)NSString    *password;
+@property (nonatomic, copy)NSString    *remark;
 
 @end

@@ -8,12 +8,15 @@
 
 #import "HTTypeViewController.h"
 #import "HTTypeDetailViewController.h"
+#import "AppDelegate.h"
 
 @interface HTTypeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic, strong)UITableView   *tableView;
 @property(nonatomic, strong)NSArray       *imageNames;
 @property(nonatomic, strong)NSArray       *typeTitles;
+
+@property(nonatomic, strong)NSMutableDictionary      *countDic;
 
 @end
 
@@ -24,6 +27,20 @@
     [self.view addSubview:self.tableView];
     self.imageNames = @[@"type_app",@"type_pc",@"type_game",@"type_card",@"type_chat",@"type_web",@"type_other"];
     self.typeTitles = @[@"APP",@"电脑",@"游戏",@"银行卡/信用卡",@"社交",@"网站",@"其他"];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSArray *types = [app.items valueForKeyPath:@"@unionOfObjects.type"];
+    [self.typeTitles enumerateObjectsUsingBlock:^(NSString *type, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.countDic setValue:@(0) forKey:type];
+    }];
+    [types enumerateObjectsUsingBlock:^(NSString *type, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSInteger count = [self.countDic integerForKey:type];
+        [self.countDic setValue:@(count+1) forKey:type];
+    }];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -40,7 +57,8 @@
     UIImage *original = [UIImage imageNamed:self.imageNames[indexPath.row]];
     cell.imageView.image = [HTUtil imageResizeFromImage:original toSize:CGSizeMake(50, 50)];
     NSString *title = self.typeTitles[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@(2)",title];
+    NSInteger count = [self.countDic integerForKey:title];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@(%ld)",title,count];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -48,6 +66,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     HTTypeDetailViewController *detailVC = [[HTTypeDetailViewController alloc]init];
     detailVC.hidesBottomBarWhenPushed = YES;
+    detailVC.typeName = _typeTitles[indexPath.row];
     [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -61,6 +80,13 @@
         _tableView.tableFooterView = [UIView new];
     }
     return _tableView;
+}
+
+- (NSMutableDictionary *)countDic{
+    if (!_countDic) {
+        _countDic = [NSMutableDictionary dictionary];
+    }
+    return _countDic;
 }
 
 - (void)didReceiveMemoryWarning {

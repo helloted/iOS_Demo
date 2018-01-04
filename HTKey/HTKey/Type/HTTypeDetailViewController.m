@@ -15,10 +15,8 @@
 @interface HTTypeDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong)UITableView  *tableView;
-@property (nonatomic, strong)UIButton     *editBtn;
-@property (nonatomic, strong)NSMutableArray *removeArray;
-@property (nonatomic, strong)NSMutableArray *removeObjects;
-
+@property (nonatomic, strong)UIButton     *addBtn;
+@property (nonatomic, strong)NSMutableArray *sourceArray;
 
 @end
 
@@ -27,7 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.editBtn];
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [app.items enumerateObjectsUsingBlock:^(HTItemModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([model.type isEqualToString:self.typeName]) {
+            [self.sourceArray addObject:model];
+        }
+    }];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.addBtn];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -39,8 +43,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    return app.items.count;
+    return _sourceArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -50,8 +53,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HTItemTableViewCell *cell = [HTItemTableViewCell cellWithTableView:tableView];
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    cell.model = app.items[indexPath.row];
+    cell.model = _sourceArray[indexPath.row];
     return cell;
 }
 
@@ -62,29 +64,14 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    HTItemModel *model = app.items[indexPath.row];
-    if (tableView.editing) {
-        [self.removeArray addObject:indexPath];
-        [self.removeObjects addObject:model];
-    }else{
-        HTItemDetailViewController *detailVC = [[HTItemDetailViewController alloc]init];
-        detailVC.model = model;
-        detailVC.hidesBottomBarWhenPushed = YES;
-        detailVC.edit = NO;
-        [self.navigationController pushViewController:detailVC animated:YES];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    }
+    HTItemDetailViewController *detailVC = [[HTItemDetailViewController alloc]init];
+    detailVC.model = _sourceArray[indexPath.row];
+    detailVC.hidesBottomBarWhenPushed = YES;
+    detailVC.edit = NO;
+    [self.navigationController pushViewController:detailVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (tableView.editing) {
-        AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        HTItemModel *model = app.items[indexPath.row];
-        [self.removeArray removeObject:indexPath];
-        [self.removeObjects removeObject:model];
-    }
-}
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -109,36 +96,38 @@
     return _tableView;
 }
 
-- (UIButton *)editBtn{
-    if (!_editBtn) {
-        _editBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _editBtn.frame = CGRectMake(0, 0, 40, 20);
-        [_editBtn setTitle:@"编辑" forState:UIControlStateNormal];
-        [_editBtn bk_addEventHandler:^(id sender) {
-            if (!_tableView.editing) {
-                [_editBtn setTitle:@"完成" forState:UIControlStateNormal];
-                [self.tableView setEditing:YES animated:YES];
-                self.removeArray = [NSMutableArray array];
-                self.removeObjects = [NSMutableArray array];
-            }else{
-                [_editBtn setTitle:@"编辑" forState:UIControlStateNormal];
-                [self.tableView setEditing:NO animated:YES];
-                AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [self.tableView deleteRowsAtIndexPaths:self.removeArray withRowAnimation:UITableViewRowAnimationLeft];
-//                [self.removeObjects enumerateObjectsUsingBlock:^(HTItemModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
-//                    [app.items removeObject:model];
-//                }];
-            }
+- (UIButton *)addBtn{
+    if (!_addBtn) {
+        _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _addBtn.frame = CGRectMake(0, 0, FitFloat(20), FitFloat(20));
+        [_addBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+        [_addBtn bk_addEventHandler:^(id sender) {
+            HTItemModel *newModel = [[HTItemModel alloc]init];
+            AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [app.items addObject:newModel];
+            HTItemDetailViewController *detailVC = [[HTItemDetailViewController alloc]init];
+            detailVC.hidesBottomBarWhenPushed = YES;
+            detailVC.edit = YES;
+            detailVC.model = newModel;
+            [self.navigationController pushViewController:detailVC animated:YES];
         } forControlEvents:UIControlEventTouchDown];
     }
-    return _editBtn;
+    return _addBtn;
 }
 
+- (NSMutableArray *)sourceArray{
+    if (!_sourceArray) {
+        _sourceArray = [NSMutableArray array];
+    }
+    return _sourceArray;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation

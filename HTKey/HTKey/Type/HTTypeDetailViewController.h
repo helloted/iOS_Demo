@@ -10,4 +10,6 @@
 
 @interface HTTypeDetailViewController : HTSuperViewController
 
+@property(nonatomic, strong)NSString   *typeName;
+
 @end
