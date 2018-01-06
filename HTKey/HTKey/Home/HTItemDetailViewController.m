@@ -152,6 +152,7 @@
     if (indexPath.section==0&&indexPath.row==0) {
         HTChooseTypeViewController *chooseVC = [[HTChooseTypeViewController alloc]init];
         chooseVC.delegate = self;
+        self.edit = YES;
         [self.navigationController pushViewController:chooseVC animated:YES];
     }
 }
