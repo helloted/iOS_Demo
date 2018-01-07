@@ -203,6 +203,10 @@
     NSData *file_data = [NSData dataWithContentsOfFile:path];
     [mailCompose addAttachmentData:file_data mimeType:@"txt" fileName:@"我的密码.txt"];
     
+    if (!mailCompose) {
+        return;
+    }
+    
     // 弹出邮件发送视图
     [self presentViewController:mailCompose animated:YES completion:nil];
 }
