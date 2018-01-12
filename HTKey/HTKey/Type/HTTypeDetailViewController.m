@@ -32,6 +32,7 @@
         }
     }];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.addBtn];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated{
