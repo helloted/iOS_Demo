@@ -26,11 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchBtn];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.addBtn];
-    [self.view addSubview:self.tableView];
-    _inSearch = NO;
-    _searchArray = [NSMutableArray array];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchBtn];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.addBtn];
+//    [self.view addSubview:self.tableView];
+//    _inSearch = NO;
+//    _searchArray = [NSMutableArray array];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

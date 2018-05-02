@@ -14,7 +14,7 @@
 
 @implementation HTSuperViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
     self.view.backgroundColor = DefaultBackGroundColor;
     self.edgesForExtendedLayout = UIRectEdgeNone;
