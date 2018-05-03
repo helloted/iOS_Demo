@@ -1,0 +1,8 @@
+
+platform :ios, ‘9.0’
+
+target ‘RTMPDemo’ do
+
+pod 'rtmp-wrapper',   '~> 1.0.6'
+
+end

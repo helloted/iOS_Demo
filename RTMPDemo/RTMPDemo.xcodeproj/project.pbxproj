@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8860F0F2209B029F009C5A14 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8860F0F1209B029F009C5A14 /* AppDelegate.m */; };
+		8860F0F5209B029F009C5A14 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8860F0F4209B029F009C5A14 /* ViewController.m */; };
+		8860F0F8209B029F009C5A14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8860F0F6209B029F009C5A14 /* Main.storyboard */; };
+		8860F0FA209B029F009C5A14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8860F0F9209B029F009C5A14 /* Assets.xcassets */; };
+		8860F0FD209B029F009C5A14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8860F0FB209B029F009C5A14 /* LaunchScreen.storyboard */; };
+		8860F100209B029F009C5A14 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8860F0FF209B029F009C5A14 /* main.m */; };
+		8860F107209B0330009C5A14 /* demo.flv in Resources */ = {isa = PBXBuildFile; fileRef = 8860F106209B0330009C5A14 /* demo.flv */; };
+		BF13DA78E7291B02ABADD5B8 /* libPods-RTMPDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 422D1F7F55CFD928E3CB17F3 /* libPods-RTMPDemo.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		24796A2E1F5926017000C62E /* Pods-RTMPDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTMPDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RTMPDemo/Pods-RTMPDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		422D1F7F55CFD928E3CB17F3 /* libPods-RTMPDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RTMPDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		690DCC6651B91D27E5E59E0A /* Pods-RTMPDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RTMPDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-RTMPDemo/Pods-RTMPDemo.release.xcconfig"; sourceTree = "<group>"; };
+		8860F0ED209B029F009C5A14 /* RTMPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTMPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8860F0F0209B029F009C5A14 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8860F0F1209B029F009C5A14 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8860F0F3209B029F009C5A14 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8860F0F4209B029F009C5A14 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8860F0F7209B029F009C5A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8860F0F9209B029F009C5A14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8860F0FC209B029F009C5A14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8860F0FE209B029F009C5A14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8860F0FF209B029F009C5A14 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8860F106209B0330009C5A14 /* demo.flv */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo.flv; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8860F0EA209B029F009C5A14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF13DA78E7291B02ABADD5B8 /* libPods-RTMPDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8860F0E4209B029F009C5A14 = {
+			isa = PBXGroup;
+			children = (
+				8860F0EF209B029F009C5A14 /* RTMPDemo */,
+				8860F0EE209B029F009C5A14 /* Products */,
+				901F88770CFF0C0AC8C940F9 /* Pods */,
+				A764F94047FB859BB9532CD7 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8860F0EE209B029F009C5A14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8860F0ED209B029F009C5A14 /* RTMPDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8860F0EF209B029F009C5A14 /* RTMPDemo */ = {
+			isa = PBXGroup;
+			children = (
+				8860F106209B0330009C5A14 /* demo.flv */,
+				8860F0F0209B029F009C5A14 /* AppDelegate.h */,
+				8860F0F1209B029F009C5A14 /* AppDelegate.m */,
+				8860F0F3209B029F009C5A14 /* ViewController.h */,
+				8860F0F4209B029F009C5A14 /* ViewController.m */,
+				8860F0F6209B029F009C5A14 /* Main.storyboard */,
+				8860F0F9209B029F009C5A14 /* Assets.xcassets */,
+				8860F0FB209B029F009C5A14 /* LaunchScreen.storyboard */,
+				8860F0FE209B029F009C5A14 /* Info.plist */,
+				8860F0FF209B029F009C5A14 /* main.m */,
+			);
+			path = RTMPDemo;
+			sourceTree = "<group>";
+		};
+		901F88770CFF0C0AC8C940F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				24796A2E1F5926017000C62E /* Pods-RTMPDemo.debug.xcconfig */,
+				690DCC6651B91D27E5E59E0A /* Pods-RTMPDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A764F94047FB859BB9532CD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				422D1F7F55CFD928E3CB17F3 /* libPods-RTMPDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8860F0EC209B029F009C5A14 /* RTMPDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8860F103209B029F009C5A14 /* Build configuration list for PBXNativeTarget "RTMPDemo" */;
+			buildPhases = (
+				277EDF4DEEFB7152BB0A9AB4 /* [CP] Check Pods Manifest.lock */,
+				8860F0E9209B029F009C5A14 /* Sources */,
+				8860F0EA209B029F009C5A14 /* Frameworks */,
+				8860F0EB209B029F009C5A14 /* Resources */,
+				4D50F9EB857ECF82B6787733 /* [CP] Embed Pods Frameworks */,
+				38442F18014961838FC8082C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RTMPDemo;
+			productName = RTMPDemo;
+			productReference = 8860F0ED209B029F009C5A14 /* RTMPDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8860F0E5209B029F009C5A14 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = iMac;
+				TargetAttributes = {
+					8860F0EC209B029F009C5A14 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 8860F0E8209B029F009C5A14 /* Build configuration list for PBXProject "RTMPDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8860F0E4209B029F009C5A14;
+			productRefGroup = 8860F0EE209B029F009C5A14 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8860F0EC209B029F009C5A14 /* RTMPDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8860F0EB209B029F009C5A14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8860F0FD209B029F009C5A14 /* LaunchScreen.storyboard in Resources */,
+				8860F0FA209B029F009C5A14 /* Assets.xcassets in Resources */,
+				8860F0F8209B029F009C5A14 /* Main.storyboard in Resources */,
+				8860F107209B0330009C5A14 /* demo.flv in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		277EDF4DEEFB7152BB0A9AB4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		38442F18014961838FC8082C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RTMPDemo/Pods-RTMPDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D50F9EB857ECF82B6787733 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RTMPDemo/Pods-RTMPDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8860F0E9209B029F009C5A14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8860F0F5209B029F009C5A14 /* ViewController.m in Sources */,
+				8860F100209B029F009C5A14 /* main.m in Sources */,
+				8860F0F2209B029F009C5A14 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8860F0F6209B029F009C5A14 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8860F0F7209B029F009C5A14 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8860F0FB209B029F009C5A14 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8860F0FC209B029F009C5A14 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8860F101209B029F009C5A14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8860F102209B029F009C5A14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8860F104209B029F009C5A14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24796A2E1F5926017000C62E /* Pods-RTMPDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HYZE4HN4M4;
+				INFOPLIST_FILE = RTMPDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.helloted.RTMPDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8860F105209B029F009C5A14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 690DCC6651B91D27E5E59E0A /* Pods-RTMPDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HYZE4HN4M4;
+				INFOPLIST_FILE = RTMPDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.helloted.RTMPDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8860F0E8209B029F009C5A14 /* Build configuration list for PBXProject "RTMPDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8860F101209B029F009C5A14 /* Debug */,
+				8860F102209B029F009C5A14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8860F103209B029F009C5A14 /* Build configuration list for PBXNativeTarget "RTMPDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8860F104209B029F009C5A14 /* Debug */,
+				8860F105209B029F009C5A14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8860F0E5209B029F009C5A14 /* Project object */;
+}
