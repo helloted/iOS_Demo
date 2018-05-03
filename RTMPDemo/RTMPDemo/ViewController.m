@@ -24,7 +24,6 @@
     if (ret) {
         NSString *htmlFile = [[NSBundle mainBundle]pathForResource:@"demo" ofType:@"flv"];
         NSData *video = [NSData dataWithContentsOfFile:htmlFile];
-        NSLog(@"original video length: %d", [video length]);
         NSUInteger length = [video length];
         NSUInteger chunkSize = 10 * 5120;
         NSUInteger offset = 0;
@@ -38,7 +37,7 @@
             offset += thisChunkSize;
             
             // Write new chunk to rtmp server
-            NSLog(@"%d", [rtmp write:chunk]);
+            [rtmp write:chunk];
             sleep(1);
         } while (offset < length);
     }
