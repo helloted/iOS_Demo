@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883871D620A04DAA0016DC70 /* H264ToFlv.m in Sources */ = {isa = PBXBuildFile; fileRef = 883871D420A04DAA0016DC70 /* H264ToFlv.m */; };
+		883871D720A04DAA0016DC70 /* a.h264 in Resources */ = {isa = PBXBuildFile; fileRef = 883871D520A04DAA0016DC70 /* a.h264 */; };
 		88D95F03209C052E00A03B28 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D95F02209C052E00A03B28 /* AppDelegate.m */; };
 		88D95F06209C052E00A03B28 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D95F05209C052E00A03B28 /* ViewController.m */; };
 		88D95F09209C052E00A03B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88D95F07209C052E00A03B28 /* Main.storyboard */; };
@@ -22,6 +24,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		883871D320A04DAA0016DC70 /* H264ToFlv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = H264ToFlv.h; sourceTree = "<group>"; };
+		883871D420A04DAA0016DC70 /* H264ToFlv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = H264ToFlv.m; sourceTree = "<group>"; };
+		883871D520A04DAA0016DC70 /* a.h264 */ = {isa = PBXFileReference; lastKnownFileType = file; path = a.h264; sourceTree = "<group>"; };
 		88D95EFE209C052E00A03B28 /* RTMPDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RTMPDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88D95F01209C052E00A03B28 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		88D95F02209C052E00A03B28 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -162,6 +167,9 @@
 		88D95F00209C052E00A03B28 /* RTMPDemo */ = {
 			isa = PBXGroup;
 			children = (
+				883871D520A04DAA0016DC70 /* a.h264 */,
+				883871D320A04DAA0016DC70 /* H264ToFlv.h */,
+				883871D420A04DAA0016DC70 /* H264ToFlv.m */,
 				88D9619C20A0273200A03B28 /* RTMPPusher */,
 				88D95FDF209C07CC00A03B28 /* include */,
 				88D95F01209C052E00A03B28 /* AppDelegate.h */,
@@ -365,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				883871D720A04DAA0016DC70 /* a.h264 in Resources */,
 				88D95F0E209C052E00A03B28 /* LaunchScreen.storyboard in Resources */,
 				88D95F0B209C052E00A03B28 /* Assets.xcassets in Resources */,
 				88D95F09209C052E00A03B28 /* Main.storyboard in Resources */,
@@ -382,6 +391,7 @@
 				88D95F06209C052E00A03B28 /* ViewController.m in Sources */,
 				88D9619F20A0274E00A03B28 /* RTMPPusher.m in Sources */,
 				88D95F11209C052E00A03B28 /* main.m in Sources */,
+				883871D620A04DAA0016DC70 /* H264ToFlv.m in Sources */,
 				88D95F03209C052E00A03B28 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
