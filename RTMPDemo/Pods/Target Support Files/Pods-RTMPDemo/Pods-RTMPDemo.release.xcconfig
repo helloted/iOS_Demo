@@ -1,9 +1,0 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = ${PODS_ROOT}/librtmp-iOS/include/** $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/IFTimeoutBlock" "${PODS_ROOT}/Headers/Public/librtmp-iOS" "${PODS_ROOT}/Headers/Public/rtmp-wrapper"
-LIBRARY_SEARCH_PATHS = $(inherited) ${PODS_ROOT}/librtmp-iOS/lib/** "$PODS_CONFIGURATION_BUILD_DIR/IFTimeoutBlock" "$PODS_CONFIGURATION_BUILD_DIR/rtmp-wrapper" $(inherited) "${PODS_ROOT}/librtmp-iOS/lib"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/IFTimeoutBlock" -isystem "${PODS_ROOT}/Headers/Public/librtmp-iOS" -isystem "${PODS_ROOT}/Headers/Public/rtmp-wrapper"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"IFTimeoutBlock" -l"crypto" -l"rtmp" -l"rtmp-wrapper" -l"ssl" -l"z"
-PODS_BUILD_DIR = $BUILD_DIR
-PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
-PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
-PODS_ROOT = ${SRCROOT}/Pods

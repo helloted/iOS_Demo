@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-#import "RtmpWrapper.h"
+#import "RTMPPusher.h"
 
 @interface ViewController ()
 
@@ -18,33 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    RtmpWrapper *rtmp = [[RtmpWrapper alloc] init];
-    BOOL ret = [rtmp openWithURL:@"rtmp://192.168.0.16:1935/zbcs/room" enableWrite:YES];
-    if (ret) {
+    RTMPPusher *pusher = [[RTMPPusher alloc]init];
+    BOOL success = [pusher connectWithURL:@"rtmp://192.168.0.16:1935/zbcs/room"];
+    if (success) {
         NSString *htmlFile = [[NSBundle mainBundle]pathForResource:@"demo" ofType:@"flv"];
         NSData *video = [NSData dataWithContentsOfFile:htmlFile];
-        NSUInteger length = [video length];
-        NSUInteger chunkSize = 10 * 5120;
-        NSUInteger offset = 0;
-        
-        // Let's split video to small chunks to publish to media server
-        do {
-            NSUInteger thisChunkSize = length - offset > chunkSize ? chunkSize : length - offset;
-            NSData* chunk = [NSData dataWithBytesNoCopy:(char *)[video bytes] + offset
-                                                 length:thisChunkSize
-                                           freeWhenDone:NO];
-            offset += thisChunkSize;
-            
-            // Write new chunk to rtmp server
-            [rtmp write:chunk];
-            sleep(1);
-        } while (offset < length);
+        [pusher pushFullVideoData:video chunkSize:10 * 5120];
     }
-    
-    // Close rtmp connection and release class object
-    [rtmp close];
+    [pusher closeRTMP];
+    NSLog(@"finish");
 }
+
 
 
 - (void)didReceiveMemoryWarning {
