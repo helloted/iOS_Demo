@@ -10,8 +10,6 @@
 
 @interface H264ToFlv : NSObject
 
-@property (nonatomic, strong)NSMutableArray    *VideoListArray;
-
 - (void)start;
 
 @end

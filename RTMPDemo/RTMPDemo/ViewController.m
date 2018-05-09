@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *str = @"po NSHomeDirectory()";
+    
+    
     [self packageH264ToFlv];
 //    [self pushFlvToServer];
 }
@@ -33,8 +35,11 @@
     RTMPPusher *pusher = [[RTMPPusher alloc]init];
     BOOL success = [pusher connectWithURL:@"rtmp://192.168.0.16:1935/zbcs/room"];
     if (success) {
+        NSString *htmlFile = [[NSBundle mainBundle]pathForResource:@"des" ofType:@"flv"];
+        
         NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-        NSString *realPath = [documentPath stringByAppendingPathComponent:@"IOSencoder.flv"];
+        NSString *realPath = [documentPath stringByAppendingPathComponent:@"b.flv"];
+        
         NSData *video = [NSData dataWithContentsOfFile:realPath];
         [pusher pushFullVideoData:video chunkSize:10 * 5120];
     }
