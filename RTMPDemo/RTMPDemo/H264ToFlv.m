@@ -62,6 +62,11 @@ int videoTagFixLen=20;
     }
 }
 
+/***
+ 整个的flv文件其实是：FLV header + previous tag size0 + tag1 + previous tag size1 + tag2 + previous tag size2 + ... +tagN + previous tag sizeN。
+ tag1是metadata，记录视频的一些信息；tag2是视频配置信息（AVC decoder configuration record），tag3是音频配置信息（如果没有音频则去掉此项），tag4以及之后的tag就是音视频数据了。
+**/
+
 -(void)packageFlv{
     NSMutableData *flvData = [[NSMutableData alloc] init];
     
@@ -148,7 +153,7 @@ int videoTagFixLen=20;
     tempByte = 0x00;
     [flvData appendBytes:&tempByte length:sizeof(tempByte)];//18
     
-    //Meta Tag data
+    //Meta Tag data 会放一些关于FLV视频和音频的参数信息,会跟在Header后面出现，有且只有一个
     tempByte = 0x17;
     [flvData appendBytes:&tempByte length:sizeof(tempByte)];//18
     
@@ -366,7 +371,7 @@ int videoTagFixLen=20;
         
         //--------
         
-        fuck=[[self.h264NALUArray objectAtIndex:j] length];
+        fuck= [[self.h264NALUArray objectAtIndex:j] length];
         
         NSLog(@"len:%d",fuck);
         
