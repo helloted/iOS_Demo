@@ -45,7 +45,7 @@ NSData *convertIntergerToHex24Data(NSInteger ori){
     return tempData;
 }
 
-void writeInterToDataWithHex24(NSInteger oriInt,NSMutableData *desData){
+void writeIntegerToDataWithHex24(NSInteger oriInt,NSMutableData *desData){
     NSMutableData *tempData = [[NSMutableData alloc] init];
     Byte tempByte;
     tempByte = (Byte)((oriInt&0x00FF0000)>>16);
@@ -57,7 +57,7 @@ void writeInterToDataWithHex24(NSInteger oriInt,NSMutableData *desData){
     [desData appendData:tempData];
 }
 
-void writeInterToDataWithHex32(NSInteger oriInt,NSMutableData *desData){
+void writeIntegerToDataWithHex32(NSInteger oriInt,NSMutableData *desData){
     Byte tempByte;
     tempByte = (Byte)((oriInt&0x00FF0000)>>24);
     [desData appendBytes:&tempByte length:sizeof(tempByte)];//16
@@ -135,10 +135,10 @@ int videoTagFixLen=20;
     [headerData appendBytes:&tempByte length:sizeof(tempByte)];
     
     // 第2-4bytes是数据区的长度
-    writeInterToDataWithHex24(size, headerData);
+    writeIntegerToDataWithHex24(size, headerData);
     
     // 第5-7个bytes是时间戳
-    writeInterToDataWithHex24(timeStamp, headerData);
+    writeIntegerToDataWithHex24(timeStamp, headerData);
     
     //第8字节拓展时间戳,前面不够用的时候用,基本上为0就可以
     tempByte = 0x00;
@@ -169,24 +169,6 @@ int videoTagFixLen=20;
     return metaData;
 }
 
-- (NSData *)createPreviousTagSizeWithLength:(NSUInteger)length{
-    NSMutableData *sizeData = [[NSMutableData alloc] init];
-    Byte tempByte;
-    tempByte = (Byte)((length&0x00FF0000)>>24);
-    [sizeData appendBytes:&tempByte length:sizeof(tempByte)];//16
-    
-    
-    tempByte = (Byte)((length&0x00FF0000)>>16);
-    [sizeData appendBytes:&tempByte length:sizeof(tempByte)];//16
-    
-    tempByte = (Byte)((length&0x0000FF00)>>8);
-    [sizeData appendBytes:&tempByte length:sizeof(tempByte)];//17
-    
-    tempByte = (Byte)(length&0x000000FF);
-    [sizeData appendBytes:&tempByte length:sizeof(tempByte)];//18
-    return sizeData;
-}
-
 /***
  整个的flv文件其实是：FLV header + previous tag size0 + tag1 + previous tag size1 + tag2 + previous tag size2 + ... +tagN + previous tag sizeN。
  tag1是metadata，记录视频的一些信息；tag2是视频配置信息（AVC decoder configuration record），tag3是音频配置信息（如果没有音频则去掉此项），tag4以及之后的tag就是音视频数据了。
@@ -204,7 +186,6 @@ int videoTagFixLen=20;
     // 前三位 0x46 0x4c 0x56为文件标识"FLV"
     [flvData appendData:[@"FLV" dataUsingEncoding:NSUTF8StringEncoding]];
     
-    
     // 第四位是版本号
     tempByte = 0x01;
     [flvData appendBytes:&tempByte length:sizeof(tempByte)];//4
@@ -214,29 +195,13 @@ int videoTagFixLen=20;
     [flvData appendBytes:&tempByte length:sizeof(tempByte)];//5
     
     // 接下来的四位为Header的长度
-    tempByte = 0x00;
-    [flvData appendBytes:&tempByte length:sizeof(tempByte)];//6
-    
-    tempByte = 0x00;
-    [flvData appendBytes:&tempByte length:sizeof(tempByte)];//7
-    
-    tempByte = 0x00;
-    [flvData appendBytes:&tempByte length:sizeof(tempByte)];//8
-
-    tempByte = 0x09;
-    [flvData appendBytes:&tempByte length:sizeof(tempByte)];//9
+    writeIntegerToDataWithHex32(9, flvData);
     
     // 接下来是FLV Body，[Previous Tag Length+Tag]、[Previous Tag Length+Tag]、[Previous Tag Length+Tag]....
     
     // Previous Tag Length
-    tempByte = 0x00;
-    [flvData appendBytes:&tempByte length:sizeof(tempByte)];//10
-    tempByte = 0x00;
-    [flvData appendBytes:&tempByte length:sizeof(tempByte)];//11
-    tempByte = 0x00;
-    [flvData appendBytes:&tempByte length:sizeof(tempByte)];//12
-    tempByte = 0x00;
-    [flvData appendBytes:&tempByte length:sizeof(tempByte)];//13
+    // 前面为0
+    writeIntegerToDataWithHex32(0, flvData);
     
     //Tag = Tag Header + Tag Data
     //TAG Head 11
@@ -313,32 +278,17 @@ int videoTagFixLen=20;
             naluLength = videoTagFixLen+[[self.h264NALUArray objectAtIndex:j-1] length];
         }
         
-        NSData *lengData = convertIntergerToHex32Data(naluLength);
-        [flvData appendData:lengData];
+        // Previous Tag Size
+        writeIntegerToDataWithHex32(naluLength, flvData);
         
-        tempByte = 0x09;
-        [flvData appendBytes:&tempByte length:sizeof(tempByte)];//18
-        
+        // 本次tag的Header
         naluLength = [[self.h264NALUArray objectAtIndex:j] length]+9;
-        writeInterToDataWithHex24(naluLength, flvData);
+        NSData *tagHeader = [self creatflvTagHeaderWithType:FLVTagHeaderTypeVideo tagDataSize:naluLength timeStamp:time_h];
+        [flvData appendData:tagHeader];
         
-        //定义3个时间戳
-        
-        lengData = convertIntergerToHex24Data(time_h);
-        [flvData appendData:lengData];
-        
-        //备份时间戳
-        tempByte = 0x00;
-        
-        [flvData appendBytes:&tempByte length:sizeof(tempByte)];//18
-        
-        //定义3个3bytes是streamID
-        tempByte = 0x000000;
-        [flvData appendBytes:&tempByte length:3];//18
-        
-        //---------
-        
-        Byte *contentByte = (Byte *)[[self.h264NALUArray objectAtIndex:j] bytes];
+        // Tag Data
+        NSData *NALU = [self.h264NALUArray objectAtIndex:j];
+        Byte *contentByte = (Byte *)[NALU bytes];
         
         if((contentByte[0]& 0x1f) == 5){
             tempByte = 0x17;
@@ -362,21 +312,20 @@ int videoTagFixLen=20;
         tempByte = 0x00;
         [flvData appendBytes:&tempByte length:sizeof(tempByte)];//18
         
-        //--------
-        
-        naluLength= [[self.h264NALUArray objectAtIndex:j] length];
-        
+        // NALU 长度写入
+        naluLength= [NALU length];
         NSLog(@"len:%ld",(long)naluLength);
+        writeIntegerToDataWithHex32(naluLength, flvData);
         
-        writeInterToDataWithHex32(naluLength, flvData);
+        // NALU数据写入
         [flvData appendData:[self.h264NALUArray objectAtIndex:j]];
         
-        time_h=time_h+40;//采样率是11500时候，是40递增，加倍就是80递增
+        time_h=time_h+40;//对于一个裸h264流，没有时间戳的概念，可以默认以25fps，即40ms一帧数据
         
     }//for
     
     naluLength = videoTagFixLen+ [[self.h264NALUArray objectAtIndex:([self.h264NALUArray count]-1)] length];
-    writeInterToDataWithHex32(naluLength, flvData);
+    writeIntegerToDataWithHex32(naluLength, flvData);
     
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *flvPath = [documentPath stringByAppendingPathComponent:@"b.flv"];
