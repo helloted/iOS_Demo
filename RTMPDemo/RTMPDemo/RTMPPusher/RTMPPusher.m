@@ -91,6 +91,7 @@
                                        freeWhenDone:NO];
         offset += thisChunkSize;
         [self write:chunk];
+        
         sleep(1);
     } while (offset < length);
 }
@@ -99,6 +100,7 @@
     @synchronized (self) {
         int sent = -1;
         if (_connected) {
+            NSLog(@"=========%d",(int)[data length]);
             sent = RTMP_Write(_rtmp, [data bytes], (int)[data length]);
         }
         return sent;
