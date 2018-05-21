@@ -19,7 +19,7 @@ typedef enum : NSUInteger {
 NSData *convertIntergerToHex32Data(NSInteger ori){
     NSMutableData *sizeData = [[NSMutableData alloc] init];
     Byte tempByte;
-    tempByte = (Byte)((ori&0x00FF0000)>>24);
+    tempByte = (Byte)((ori&0xFF000000)>>24);
     [sizeData appendBytes:&tempByte length:sizeof(tempByte)];//16
     
     tempByte = (Byte)((ori&0x00FF0000)>>16);
@@ -66,7 +66,7 @@ void writeIntegerToDataWithHex24(NSInteger oriInt,NSMutableData *desData){
 
 void writeIntegerToDataWithHex32(NSInteger oriInt,NSMutableData *desData){
     Byte tempByte;
-    tempByte = (Byte)((oriInt&0x00FF0000)>>24);
+    tempByte = (Byte)((oriInt&0xFF000000)>>24);
     [desData appendBytes:&tempByte length:sizeof(tempByte)];//16
     
     tempByte = (Byte)((oriInt&0x00FF0000)>>16);
@@ -77,6 +77,13 @@ void writeIntegerToDataWithHex32(NSInteger oriInt,NSMutableData *desData){
     
     tempByte = (Byte)(oriInt&0x000000FF);
     [desData appendBytes:&tempByte length:sizeof(tempByte)];//18
+    
+//    Byte byteData[4] = {};
+//    byteData[0] =(Byte)((oriInt & 0xFF000000)>>24);
+//    byteData[1] =(Byte)((oriInt & 0x00FF0000)>>16);
+//    byteData[2] =(Byte)((oriInt & 0x0000FF00)>>8);
+//    byteData[3] =(Byte)((oriInt & 0x000000FF));
+    
 }
 
 @interface H264ToFlv()
@@ -141,7 +148,7 @@ int videoTagFixLen=20;
     
     //第1个byte为记录着tag的类型，音频（0x8），视频（0x9），脚本（0x12）
     tempByte = (Byte)type;
-    [headerData appendBytes:&tempByte length:sizeof(tempByte)];
+    [headerData appendBytes:&tempByte length:1];
     
     // 第2-4bytes是数据区的长度
     writeIntegerToDataWithHex24(size, headerData);
@@ -318,7 +325,7 @@ int videoTagFixLen=20;
         // NALU数据写入
         [flvData appendData:[self.h264NALUArray objectAtIndex:j]];
         
-        time_h=time_h+40;//对于一个裸h264流，没有时间戳的概念，可以默认以25fps，即40ms一帧数据
+        time_h=time_h+43;//对于一个裸h264流，没有时间戳的概念，可以默认以25fps，即40ms一帧数据
         
         
         
@@ -326,11 +333,11 @@ int videoTagFixLen=20;
     
 //    [_pusher write:flvData];
     
-//    [_pusher pushFullVideoData:flvData chunkSize:51200];
+    [_pusher pushFullVideoData:flvData chunkSize:51200];
     
-    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *flvPath = [documentPath stringByAppendingPathComponent:@"d.flv"];
-    [flvData writeToFile:flvPath atomically:YES];
+//    NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+//    NSString *flvPath = [documentPath stringByAppendingPathComponent:@"d.flv"];
+//    [flvData writeToFile:flvPath atomically:YES];
 }
 
 - (NSMutableArray *)h264NALUArray{

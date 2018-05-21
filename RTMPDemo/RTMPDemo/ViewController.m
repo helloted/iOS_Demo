@@ -25,8 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self packageH264ToFlv];
-    [self pushFlvToServer];
+    [self packageH264ToFlv];
+//    [self pushFlvToServer];
 }
 
 // 捕获音视频
