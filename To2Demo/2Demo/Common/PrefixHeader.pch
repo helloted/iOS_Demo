@@ -1,0 +1,27 @@
+//
+//  PrefixHeader.pch
+//  QRScanner
+//
+//  Created by Devond on 16/4/29.
+//  Copyright © 2016年 Devond. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+#import "BaseDefine.h"
+#import "HTUtil.h"
+#include "HTSuperViewController.h"
+
+#ifndef __OPTIMIZE__
+#define NSLog(fmt, ...) NSLog((@"(%d)%s" fmt), __LINE__, __PRETTY_FUNCTION__ ,##__VA_ARGS__);
+#else
+#define NSLog(...) {}
+#endif
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
