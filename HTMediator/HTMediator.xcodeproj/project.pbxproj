@@ -13,6 +13,9 @@
 		8877777A20BFCC8B004F7E87 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8877777920BFCC8B004F7E87 /* Assets.xcassets */; };
 		8877777D20BFCC8B004F7E87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8877777B20BFCC8B004F7E87 /* LaunchScreen.storyboard */; };
 		8877778020BFCC8B004F7E87 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8877777F20BFCC8B004F7E87 /* main.m */; };
+		8877778820BFCD20004F7E87 /* HTOtherModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8877778720BFCD20004F7E87 /* HTOtherModule.m */; };
+		8877778B20BFDC0D004F7E87 /* HTMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8877778A20BFDC0D004F7E87 /* HTMediator.m */; };
+		8877779120BFDF85004F7E87 /* HTMediator+HTOtherModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 8877779020BFDF85004F7E87 /* HTMediator+HTOtherModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,12 @@
 		8877777C20BFCC8B004F7E87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8877777E20BFCC8B004F7E87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8877777F20BFCC8B004F7E87 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8877778620BFCD20004F7E87 /* HTOtherModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTOtherModule.h; sourceTree = "<group>"; };
+		8877778720BFCD20004F7E87 /* HTOtherModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTOtherModule.m; sourceTree = "<group>"; };
+		8877778920BFDC0D004F7E87 /* HTMediator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMediator.h; sourceTree = "<group>"; };
+		8877778A20BFDC0D004F7E87 /* HTMediator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMediator.m; sourceTree = "<group>"; };
+		8877778F20BFDF85004F7E87 /* HTMediator+HTOtherModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HTMediator+HTOtherModule.h"; sourceTree = "<group>"; };
+		8877779020BFDF85004F7E87 /* HTMediator+HTOtherModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HTMediator+HTOtherModule.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,10 @@
 		8877776F20BFCC8B004F7E87 /* HTMediator */ = {
 			isa = PBXGroup;
 			children = (
+				8877778920BFDC0D004F7E87 /* HTMediator.h */,
+				8877778A20BFDC0D004F7E87 /* HTMediator.m */,
+				8877778F20BFDF85004F7E87 /* HTMediator+HTOtherModule.h */,
+				8877779020BFDF85004F7E87 /* HTMediator+HTOtherModule.m */,
 				8877777020BFCC8B004F7E87 /* AppDelegate.h */,
 				8877777120BFCC8B004F7E87 /* AppDelegate.m */,
 				8877777320BFCC8B004F7E87 /* ViewController.h */,
@@ -67,6 +80,8 @@
 				8877777B20BFCC8B004F7E87 /* LaunchScreen.storyboard */,
 				8877777E20BFCC8B004F7E87 /* Info.plist */,
 				8877777F20BFCC8B004F7E87 /* main.m */,
+				8877778620BFCD20004F7E87 /* HTOtherModule.h */,
+				8877778720BFCD20004F7E87 /* HTOtherModule.m */,
 			);
 			path = HTMediator;
 			sourceTree = "<group>";
@@ -97,6 +112,7 @@
 		8877776520BFCC8B004F7E87 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HT;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = HelloTed;
 				TargetAttributes = {
@@ -144,7 +160,10 @@
 			files = (
 				8877777520BFCC8B004F7E87 /* ViewController.m in Sources */,
 				8877778020BFCC8B004F7E87 /* main.m in Sources */,
+				8877778820BFCD20004F7E87 /* HTOtherModule.m in Sources */,
+				8877779120BFDF85004F7E87 /* HTMediator+HTOtherModule.m in Sources */,
 				8877777220BFCC8B004F7E87 /* AppDelegate.m in Sources */,
+				8877778B20BFDC0D004F7E87 /* HTMediator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

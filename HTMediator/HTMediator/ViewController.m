@@ -7,6 +7,10 @@
 //
 
 #import "ViewController.h"
+#import <objc/runtime.h>
+#import "HTMediator.h"
+#import "HTMediator+HTOtherModule.h"
+
 
 @interface ViewController ()
 
@@ -16,7 +20,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    NSString *className = @"HTOtherModule";
+    NSString *actionName = @"fullOneSentenceWithName:hour:place:doSomething:";
+    NSString *result =  [[HTMediator sharedInstance] otherModulePerform:className action:actionName name:@"小明" hour:10 place:@"食堂" doSomething:@"吃饭"];
+    NSLog(@"result:%@",result);
+}
+
+- (void)performDemo{
+    Class cls = NSClassFromString(@"HTOtherModule");
+    id obj = [[cls alloc]init];
+    [obj performSelector:NSSelectorFromString(@"doSomethingWithParameter:") withObject:@"this is the value"];
+}
+
+- (void)invotion{
+    SEL aSelecotor = NSSelectorFromString(@"doSomethingWithParameter:");
+    Class cls = NSClassFromString(@"HTOtherModule");
+    id obj = [[cls alloc]init];
+    NSMethodSignature * sig  = [cls instanceMethodSignatureForSelector:aSelecotor];
+    NSInvocation * invocatin = [NSInvocation invocationWithMethodSignature:sig];
+    [invocatin setTarget:obj];
+    [invocatin setSelector:aSelecotor];
+    NSString *para = @"this is the value";
+    [invocatin setArgument:&para atIndex:2];
+    [invocatin invoke];
 }
 
 
