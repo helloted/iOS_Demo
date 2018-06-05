@@ -20,10 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view
     NSString *className = @"HTOtherModule";
     NSString *actionName = @"fullOneSentenceWithName:hour:place:doSomething:";
     NSString *result =  [[HTMediator sharedInstance] otherModulePerform:className action:actionName name:@"小明" hour:10 place:@"食堂" doSomething:@"吃饭"];
     NSLog(@"result:%@",result);
+    
+    UIButton 
 }
 
 - (void)performDemo{

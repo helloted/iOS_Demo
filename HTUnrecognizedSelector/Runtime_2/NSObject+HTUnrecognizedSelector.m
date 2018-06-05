@@ -8,6 +8,7 @@
 
 #import "NSObject+HTUnrecognizedSelector.h"
 #import <objc/runtime.h>
+#import "HTProxy.h"
 
 static NSString *_errorSelectorName;
 void dynamicMethodIMP(id self,SEL _cmd){
@@ -30,21 +31,16 @@ static inline void change_method(Class _originalClass ,SEL _originalSel,Class _n
 @implementation NSObject (HTUnrecognizedSelector)
 
 + (void)load{
-    change_method([self class], @selector(methodSignatureForSelector:), [self class], @selector(ht_methodSignatureForSelector:));
-    change_method([self class], @selector(forwardInvocation:), [self class], @selector(ht_forwardInvocation:));
+    change_method([self class], @selector(methodSignatureForSelector:), NSClassFromString(@"HTProxy"), @selector(methodSignatureForSelector:));
+    change_method([self class], @selector(forwardInvocation:), NSClassFromString(@"HTProxy"), @selector(forwardInvocation:));
 }
 
 
 - (NSMethodSignature *)ht_methodSignatureForSelector:(SEL)aSelector{
     if (![self respondsToSelector:aSelector]) {
         _errorSelectorName = NSStringFromSelector(aSelector);
+        class_addMethod([self class], aSelector, (IMP)dynamicMethodIMP, "v@:");
         NSMethodSignature *methodSignature = [self ht_methodSignatureForSelector:aSelector];
-        if (class_addMethod([self class], aSelector, (IMP)dynamicMethodIMP, "v@:")) {//方法参数的获取存在问题
-            NSLog(@"%@ Selector添加成功！",_errorSelectorName);
-        }
-        if (!methodSignature) {
-            methodSignature = [self ht_methodSignatureForSelector:aSelector];
-        }
         return methodSignature;
     }else{
         return [self ht_methodSignatureForSelector:aSelector];

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		884FD67420C52236004CAE70 /* HTProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 884FD67320C52236004CAE70 /* HTProxy.m */; };
 		887776EB20BE38FD004F7E87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 887776EA20BE38FD004F7E87 /* AppDelegate.m */; };
 		887776EE20BE38FD004F7E87 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 887776ED20BE38FD004F7E87 /* ViewController.m */; };
 		887776F120BE38FD004F7E87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 887776EF20BE38FD004F7E87 /* Main.storyboard */; };
@@ -18,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		884FD67220C52236004CAE70 /* HTProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTProxy.h; sourceTree = "<group>"; };
+		884FD67320C52236004CAE70 /* HTProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTProxy.m; sourceTree = "<group>"; };
 		887776E620BE38FD004F7E87 /* Runtime_2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runtime_2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		887776E920BE38FD004F7E87 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		887776EA20BE38FD004F7E87 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -77,6 +80,8 @@
 				8877770020BE393D004F7E87 /* NSObject+HTUnrecognizedSelector.m */,
 				8877770220BE398D004F7E87 /* Demo.h */,
 				8877770320BE398D004F7E87 /* Demo.m */,
+				884FD67220C52236004CAE70 /* HTProxy.h */,
+				884FD67320C52236004CAE70 /* HTProxy.m */,
 			);
 			path = Runtime_2;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				884FD67420C52236004CAE70 /* HTProxy.m in Sources */,
 				8877770420BE398D004F7E87 /* Demo.m in Sources */,
 				887776EE20BE38FD004F7E87 /* ViewController.m in Sources */,
 				887776F920BE38FD004F7E87 /* main.m in Sources */,
