@@ -1,0 +1,8 @@
+
+platform :ios, ‘9.0’
+
+target ‘HTTPServer’ do
+
+pod 'CocoaHTTPServer'
+
+end
