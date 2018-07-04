@@ -21,11 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    btn.frame = CGRectMake(200, 200, 50, 50);
-    [self.view addSubview:btn];
-    [btn addTarget:self action:@selector(initServer) forControlEvents:UIControlEventTouchUpInside];
+    [self initServer];
+    
 }
 
  //初始化本地服务器

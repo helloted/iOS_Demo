@@ -15,17 +15,16 @@
 #import <HTTPDynamicFileResponse.h>
 #import <HTTPFileResponse.h>
 #import <MultipartMessageHeaderField.h>
-#import <MultipartFormDataParser.h>
+#import <MultipartFormDataParser.h> 
 
 // Log levels : off, error, warn, info, verbose
 // Other flags : trace
 static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
 
-/**
- * All we have to do is voerride appropriate methods in HTTPConnection.
- */
-
 @interface HTHTTPConnection()<MultipartFormDataParserDelegate>
+
+@property (nonatomic, copy)NSString             *filePath;
+@property (nonatomic, strong)NSMutableData      *receivedData;
 
 @end
 
@@ -125,53 +124,33 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
     [parser appendData:postDataChunk];
 }
 
-#pragma mark -- multipart form data parser delegate
+#pragma mark -- 接受数据的代理
 - (void)processStartOfPartWithHeader:(MultipartMessageHeader *)header {
-    // in this sample, we are not interested in parts, other then file parts.
-    // check content disposition to find out filename
+    // 获取上传的文件名称
     MultipartMessageHeaderField *disposition = [header.fields objectForKey:@"Content-Disposition"];
     NSString *filename = [[disposition.params objectForKey:@"filename"] lastPathComponent];
     if (filename == nil || [filename isEqualToString:@""]) {
-        // it's either not a file part, or
-        // an empty form sent. we won't handle it.
         return;
     }
-    //    NSString* uploadDirPath = [[config documentRoot] stringByAppendingPathComponent:@"upload"];
-    
-    //    BOOL isDir = YES;
-    //    if (![[NSFileManager defaultManager]fileExistsAtPath:uploadDirPath isDirectory:&isDir ]) {
-    //        [[NSFileManager defaultManager]createDirectoryAtPath:uploadDirPath withIntermediateDirectories:YES attributes:nil error:nil];
-    //    }
-    
+
+    // 上传的文件存放的位置
     NSString *uploadDirPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *filePath = [uploadDirPath stringByAppendingPathComponent:filename];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
-        storeFile = nil;
-    }else {
-        HTTPLogVerbose(@"Saving file to %@", filePath);
-        if (![[NSFileManager defaultManager] createDirectoryAtPath:uploadDirPath withIntermediateDirectories:YES attributes:nil error:nil]) {
-            HTTPLogError(@"Could not create directory at path: %@", filePath);
-        }
-        if (![[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil]) {
-            HTTPLogError(@"Cound not create file at path: %@", filePath);
-        }
-        storeFile = [NSFileHandle fileHandleForWritingAtPath:filePath];
-        [uploadedFiles addObject:[NSString stringWithFormat:@"/upload/%@", filePath]];
+    
+    if (![[NSFileManager defaultManager] createDirectoryAtPath:uploadDirPath withIntermediateDirectories:YES attributes:nil error:nil]) {
+        NSLog(@"Could not create directory at path: %@", uploadDirPath);
     }
+    
+    _filePath = [uploadDirPath stringByAppendingPathComponent:filename];
+    _receivedData = [NSMutableData data];
 }
 
 - (void)processContent:(NSData *)data WithHeader:(MultipartMessageHeader *)header {
-    // here we just write the output from parser to the file
-    if (storeFile) {
-        [storeFile writeData:data];
-        NSLog(@"????");
-    }
+    [_receivedData appendData:data];
 }
 
 - (void)processEndOfPartWithHeader:(MultipartMessageHeader *)header {
-    // as the file part is over, we close the file.
-    [storeFile closeFile];
-    storeFile = nil;
+    [_receivedData writeToFile:_filePath atomically:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReceivedFileNotification" object:nil];
 }
 
 - (void)processPreambleData:(NSData *)data {

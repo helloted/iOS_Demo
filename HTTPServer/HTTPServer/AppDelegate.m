@@ -7,6 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+
+#define RGBFromHex(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((rgbValue & 0x00FF00) >>  8))/255.0 \
+blue:((float)((rgbValue & 0x0000FF) >>  0))/255.0 \
+alpha:1.0]
 
 @interface AppDelegate ()
 
@@ -16,7 +23,11 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    ViewController *vc = [[ViewController alloc]init];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    nav.navigationBar.tintColor = [UIColor orangeColor];
+    nav.navigationBar.barTintColor = RGBFromHex(0x60a6f9);
+    self.window.rootViewController = nav;
     return YES;
 }
 
