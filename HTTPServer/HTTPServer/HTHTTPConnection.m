@@ -15,13 +15,12 @@
 #import <HTTPDynamicFileResponse.h>
 #import <HTTPFileResponse.h>
 #import <MultipartMessageHeaderField.h>
-#import <MultipartFormDataParser.h> 
+#import <MultipartFormDataParser.h>
 
-// Log levels : off, error, warn, info, verbose
-// Other flags : trace
-static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
-
-@interface HTHTTPConnection()<MultipartFormDataParserDelegate>
+@interface HTHTTPConnection()<MultipartFormDataParserDelegate>{
+    MultipartFormDataParser *parser;
+    NSMutableArray          *uploadedFiles;
+}
 
 @property (nonatomic, copy)NSString             *filePath;
 @property (nonatomic, strong)NSMutableData      *receivedData;
@@ -30,9 +29,9 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
 
 @implementation HTHTTPConnection
 
+#pragma mark ====对请求的处理===
+
 - (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path {
-    HTTPLogTrace();
-    
     if ([method isEqualToString:@"POST"]) {
         if ([path isEqualToString:@"/upload.html"]) {
             return YES;
@@ -42,10 +41,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
 }
 
 - (BOOL)expectsRequestBodyFromMethod:(NSString *)method atPath:(NSString *)path {
-    HTTPLogTrace();
-    
-    // Inform HTTP server that we expect a body to accompany a POST request
-    
     if ([method isEqualToString:@"POST"] && [path isEqualToString:@"/upload.html"]) {
         // here we need to make sure, boundary is set in header
         NSString *contentType = [request headerField:@"Content-Type"];
@@ -86,8 +81,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
 }
 
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path {
-    HTTPLogTrace();
-    
     if ([method isEqualToString:@"POST"] && [path isEqualToString:@"/upload.html"]) {
         // this method will generate response with links to uploaded file
         NSMutableString *filesStr = [[NSMutableString alloc] init];
@@ -108,9 +101,6 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
 }
 
 - (void)prepareForBodyWithSize:(UInt64)contentLength {
-    HTTPLogTrace();
-    
-    // set up mine parser
     NSString *boundary = [request headerField:@"boundary"];
     parser = [[MultipartFormDataParser alloc] initWithBoundary:boundary formEncoding:NSUTF8StringEncoding];
     parser.delegate = self;
@@ -118,13 +108,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE; // | HTTP_LOG_FLAG_TRACE
 }
 
 - (void)processBodyData:(NSData *)postDataChunk {
-    HTTPLogTrace();
-    // append data to the parser. It will invoke callbacks to let us handle
-    // parsed data.
     [parser appendData:postDataChunk];
 }
 
-#pragma mark -- 接受数据的代理
+#pragma mark ===接受数据的代理===
 - (void)processStartOfPartWithHeader:(MultipartMessageHeader *)header {
     // 获取上传的文件名称
     MultipartMessageHeaderField *disposition = [header.fields objectForKey:@"Content-Disposition"];

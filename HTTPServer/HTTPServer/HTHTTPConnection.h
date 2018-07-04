@@ -10,12 +10,6 @@
 
 @class MultipartFormDataParser;
 
-@interface HTHTTPConnection : HTTPConnection{
-    MultipartFormDataParser *parser;
-    NSFileHandle *storeFile;
-    NSMutableArray *uploadedFiles;
-    
-}
-
+@interface HTHTTPConnection : HTTPConnection
 
 @end

@@ -25,6 +25,8 @@
     
     [self initServer];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receivedFiles) name:@"ReceivedFileNotification" object:nil];
+    
 }
 
  //初始化本地服务器
@@ -42,6 +44,11 @@
     }else {
         NSLog(@"%@", error);
     }
+}
+
+
+- (void)receivedFiles{
+    NSLog(@"received files====");
 }
 
 
