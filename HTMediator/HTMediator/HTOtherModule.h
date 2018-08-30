@@ -12,6 +12,8 @@
 
 - (void)doSomethingWithParameter:(NSString *)para;
 
+- (void)doWithDict:(NSDictionary *)dict;
+
 - (NSString *)fullOneSentenceWithName:(NSString *)name hour:(NSNumber *)hour place:(NSString *)palce doSomething:(NSString *)doSomething;
 
 @end

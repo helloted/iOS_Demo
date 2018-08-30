@@ -10,10 +10,17 @@
 
 @implementation HTMediator (HTOtherModule)
 
-- (NSString *)otherModulePerform:(NSString *)targetName action:(NSString *)actionName name:(NSString *)name hour:(NSUInteger)hour place:(NSString *)palce doSomething:(NSString *)doSomething{
+- (NSString *)otherModulePerformAction:(NSString *)actionName name:(NSString *)name hour:(NSUInteger)hour place:(NSString *)palce doSomething:(NSString *)doSomething{
+    NSString *targetName = @"HTOtherModule";
     NSNumber *hourNumber = [NSNumber numberWithUnsignedInteger:hour];
     NSArray *paras = @[name,hourNumber,palce,doSomething];
     return [self performTarget:targetName action:actionName parameters:paras];
+}
+
+- (void)doWithDict:(NSDictionary *)dict{
+    NSString *targetName = @"HTOtherModule";
+    NSString *actionName = @"doWithDict:";
+    [self performTarget:targetName action:actionName parameters:@[dict]];
 }
 
 @end

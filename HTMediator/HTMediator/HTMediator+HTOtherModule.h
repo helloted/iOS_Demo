@@ -10,6 +10,9 @@
 
 @interface HTMediator (HTOtherModule)
 
-- (NSString *)otherModulePerform:(NSString *)targetName action:(NSString *)actionName name:(NSString *)name hour:(NSUInteger)hour place:(NSString *)palce doSomething:(NSString *)doSomething;
+- (NSString *)otherModulePerformAction:(NSString *)actionName name:(NSString *)name hour:(NSUInteger)hour place:(NSString *)palce doSomething:(NSString *)doSomething;
+
+- (void)doWithDict:(NSDictionary *)dict;
+
 
 @end

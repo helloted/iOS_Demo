@@ -14,6 +14,10 @@
     NSLog(@"done some with:%@",para);
 }
 
+- (void)doWithDict:(NSDictionary *)dict{
+    NSLog(@"dict==%@",dict);
+}
+
 - (NSString *)fullOneSentenceWithName:(NSString *)name hour:(NSNumber *)hour place:(NSString *)palce doSomething:(NSString *)doSomething{
     NSString *full = [NSString stringWithFormat:@"%@%@的时候在%@%@",name,hour,palce,doSomething];
     NSLog(@"full-%@",full);
