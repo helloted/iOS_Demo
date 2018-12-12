@@ -1,0 +1,10 @@
+
+platform :ios, ‘9.0’
+
+target ‘UITableViewDemo’ do
+
+pod 'Masonry', '~> 1.0.2'
+pod 'AFNetworking', '~> 3.1.0'
+pod 'SDWebImage', '~> 4.0.0'
+
+end

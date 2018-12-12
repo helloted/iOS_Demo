@@ -31,8 +31,8 @@ static inline void change_method(Class _originalClass ,SEL _originalSel,Class _n
 @implementation NSObject (HTUnrecognizedSelector)
 
 + (void)load{
-    change_method([self class], @selector(methodSignatureForSelector:), NSClassFromString(@"HTProxy"), @selector(methodSignatureForSelector:));
-    change_method([self class], @selector(forwardInvocation:), NSClassFromString(@"HTProxy"), @selector(forwardInvocation:));
+//    change_method([self class], @selector(methodSignatureForSelector:), [self class], @selector(ht_methodSignatureForSelector:));
+//    change_method([self class], @selector(forwardInvocation:), [self class], @selector(ht_forwardInvocation:));
 }
 
 

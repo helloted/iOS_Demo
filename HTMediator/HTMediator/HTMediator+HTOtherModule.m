@@ -10,7 +10,7 @@
 
 @implementation HTMediator (HTOtherModule)
 
-- (NSString *)otherModulePerformAction:(NSString *)actionName name:(NSString *)name hour:(NSUInteger)hour place:(NSString *)palce doSomething:(NSString *)doSomething{
+- (NSString *)otherModulePerformAction:(NSString *)actionName name:(NSString *)name hour:(NSUInteger)hour place:(NSString *)palce doSomething:(NSDictionary *)doSomething{
     NSString *targetName = @"HTOtherModule";
     NSNumber *hourNumber = [NSNumber numberWithUnsignedInteger:hour];
     NSArray *paras = @[name,hourNumber,palce,doSomething];
