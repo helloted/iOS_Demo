@@ -1,0 +1,13 @@
+//
+//  SecondViewController.h
+//  HTRefresh
+//
+//  Created by iMac on 2018/5/28.
+//  Copyright © 2018年 HelloTed. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface SecondViewController : UIViewController
+
+@end
