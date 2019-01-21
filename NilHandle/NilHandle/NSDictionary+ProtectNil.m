@@ -12,7 +12,16 @@
 static inline void swizzling_method(Class _originalClass ,SEL _originalSel,Class _newClass ,SEL _newSel){
     Method methodOriginal = class_getInstanceMethod(_originalClass, _originalSel);
     Method methodNew = class_getInstanceMethod(_newClass, _newSel);
-    method_exchangeImplementations(methodOriginal, methodNew);
+    
+    IMP impNew = method_getImplementation(methodNew);
+    IMP impOriginal = method_getImplementation(methodOriginal);
+    
+    bool didAddMethod = class_addMethod(_originalClass,_originalSel,impNew,method_getTypeEncoding(methodNew));
+    if (didAddMethod) {
+        class_replaceMethod(_originalClass,_newSel,impOriginal,method_getTypeEncoding(methodOriginal));
+    }else{
+        method_exchangeImplementations(methodOriginal, methodNew);
+    }
 }
 
 @implementation NSDictionary (ProtectNil)
