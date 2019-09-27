@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5DB81745231132610027DA32 /* HTMediator+TargetClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB81744231132610027DA32 /* HTMediator+TargetClass.m */; };
+		5DB8174B2313C51A0027DA32 /* URLRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB8174A2313C51A0027DA32 /* URLRouter.m */; };
 		8877777220BFCC8B004F7E87 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8877777120BFCC8B004F7E87 /* AppDelegate.m */; };
 		8877777520BFCC8B004F7E87 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8877777420BFCC8B004F7E87 /* ViewController.m */; };
 		8877777820BFCC8B004F7E87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8877777620BFCC8B004F7E87 /* Main.storyboard */; };
@@ -19,6 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5DB81743231132610027DA32 /* HTMediator+TargetClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HTMediator+TargetClass.h"; sourceTree = "<group>"; };
+		5DB81744231132610027DA32 /* HTMediator+TargetClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HTMediator+TargetClass.m"; sourceTree = "<group>"; };
+		5DB817492313C51A0027DA32 /* URLRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLRouter.h; sourceTree = "<group>"; };
+		5DB8174A2313C51A0027DA32 /* URLRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLRouter.m; sourceTree = "<group>"; };
 		8877776D20BFCC8B004F7E87 /* HTMediator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTMediator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8877777020BFCC8B004F7E87 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8877777120BFCC8B004F7E87 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -82,6 +88,10 @@
 				8877777F20BFCC8B004F7E87 /* main.m */,
 				8877778620BFCD20004F7E87 /* HTOtherModule.h */,
 				8877778720BFCD20004F7E87 /* HTOtherModule.m */,
+				5DB81743231132610027DA32 /* HTMediator+TargetClass.h */,
+				5DB81744231132610027DA32 /* HTMediator+TargetClass.m */,
+				5DB817492313C51A0027DA32 /* URLRouter.h */,
+				5DB8174A2313C51A0027DA32 /* URLRouter.m */,
 			);
 			path = HTMediator;
 			sourceTree = "<group>";
@@ -159,6 +169,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8877777520BFCC8B004F7E87 /* ViewController.m in Sources */,
+				5DB81745231132610027DA32 /* HTMediator+TargetClass.m in Sources */,
+				5DB8174B2313C51A0027DA32 /* URLRouter.m in Sources */,
 				8877778020BFCC8B004F7E87 /* main.m in Sources */,
 				8877778820BFCD20004F7E87 /* HTOtherModule.m in Sources */,
 				8877779120BFDF85004F7E87 /* HTMediator+HTOtherModule.m in Sources */,

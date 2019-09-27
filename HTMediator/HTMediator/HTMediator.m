@@ -20,18 +20,13 @@
     return mediator;
 }
 
-- (id)performTarget:(NSString *)targetName action:(NSString *)actionName parameters:(NSArray *)parameters{
-    Class tagetClass = NSClassFromString(targetName);
+- (id)performTarget:(NSString *)targetClassName action:(NSString *)actionName parameters:(NSArray *)parameters{
+    Class tagetClass = NSClassFromString(targetClassName);
     NSObject *tagert= [[tagetClass alloc]init];
     SEL aSelector = NSSelectorFromString(actionName);
     NSMethodSignature *methodSignature = [tagetClass instanceMethodSignatureForSelector:aSelector];
-    if(methodSignature == nil) // 方法签名找不到，异常情况自己处理
-    {
-        NSLog(@"找不到这个方法");
-        return nil;
-    }
-    else
-    {
+    if(methodSignature == nil){} // 方法签名找不到，异常情况处理
+    else{
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
         [invocation setTarget:tagert];
         [invocation setSelector:aSelector];
@@ -44,8 +39,7 @@
         
         //返回值处理
         __autoreleasing id callBackObject = nil;
-        if(methodSignature.methodReturnLength)
-        {
+        if(methodSignature.methodReturnLength){
             [invocation getReturnValue:&callBackObject];
         }
         return callBackObject;

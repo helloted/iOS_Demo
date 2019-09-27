@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "HTMediator.h"
 #import "HTMediator+HTOtherModule.h"
+#import "URLRouter.h"
 
 
 @interface ViewController ()
@@ -28,6 +29,18 @@
     
     NSDictionary *dict = @{@"name":@"Jack"};
     [[HTMediator sharedInstance] doWithDict:dict];
+    
+    // 路由注册
+    [URLRouter registerURL:@"MomentViewController"];
+    
+    // 路由使用
+    [URLRouter openURL:@"app://MomentModule/vc/MomentViewController?momentId=10018" handler:^(UIViewController * _Nonnull controller) {
+        
+    }];
+    
+    [URLRouter openRoute:@"dnfgamehelper://MomentModule/vc/MomentDetailViewController?momentId=10018&show=1" onVC:self handler:^(NSDictionary * _Nonnull callback) {
+        
+    }];
     
 
 }
